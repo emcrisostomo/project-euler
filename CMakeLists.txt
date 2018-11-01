@@ -8,6 +8,7 @@ add_executable(euler-003 euler-003.cpp multiple.cpp multiple.h)
 add_executable(euler-004 euler-004.cpp palindrome.cpp palindrome.h)
 add_executable(euler-005 euler-005.cpp multiple.cpp multiple.h)
 add_executable(euler-006 euler-006.cpp squares.cpp squares.h sum.cpp sum.h)
+add_executable(euler-007 euler-007.cpp prime.cpp prime.h)
 
 # tests
 include(CTest)
