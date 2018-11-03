@@ -84,7 +84,6 @@ int main()
   while (get_next_sequence(current_pos))
   {
     auto current_sequence = get_current_sequence_value(current_pos);
-
     max = (current_sequence > max ? current_sequence : max);
   }
 
