@@ -28,7 +28,7 @@ const unsigned int digits[NUMBER_OF_DIGITS] =  {
   7,1,6,3,6,2,6,9,5,6,1,8,8,2,6,7,0,4,2,8,2,5,2,4,8,3,6,0,0,8,2,3,2,5,7,5,3,0,4,2,0,7,5,2,9,6,3,4,5,0  };
 // @formatter:on
 
-int main()
+int main2()
 {
   unsigned long max = 0;
 
@@ -37,6 +37,53 @@ int main()
     unsigned long current_sequence = 1;
 
     for (auto j = 0; j < SEQUENCE_LENGTH; ++j) current_sequence *= digits[i + j];
+
+    max = (current_sequence > max ? current_sequence : max);
+  }
+
+  std::cout << max << "\n";
+
+  return 0;
+}
+
+bool get_next_sequence(size_t& current_pos)
+{
+  ++current_pos;
+
+  if (current_pos >= NUMBER_OF_DIGITS) return false;
+  if (digits[current_pos] != 0) return true;
+
+  // Find the next sequence of non-zero numbers of length SEQUENCE_LENGTH
+  auto counter = 0;
+
+  while (counter < SEQUENCE_LENGTH && current_pos < NUMBER_OF_DIGITS)
+  {
+    ++counter;
+    ++current_pos;
+
+    if (digits[current_pos] == 0) counter = 0;
+  }
+
+  return counter == SEQUENCE_LENGTH;
+}
+
+unsigned long get_current_sequence_value(size_t current_pos)
+{
+  unsigned long current_sequence = 1;
+
+  for (auto i = 0; i < SEQUENCE_LENGTH; ++i) current_sequence *= digits[current_pos - i];
+
+  return current_sequence;
+}
+
+int main()
+{
+  unsigned long max = 0;
+  size_t current_pos = 0;
+
+  while (get_next_sequence(current_pos))
+  {
+    auto current_sequence = get_current_sequence_value(current_pos);
 
     max = (current_sequence > max ? current_sequence : max);
   }
