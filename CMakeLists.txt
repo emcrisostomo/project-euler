@@ -3,6 +3,7 @@ project(project-euler)
 
 set(CMAKE_CXX_STANDARD 14)
 
+add_executable(euler-001 euler-001.cpp)
 add_executable(euler-002 euler-002.cpp fibonacci.cpp fibonacci.h palindrome.cpp palindrome.h)
 add_executable(euler-003 euler-003.cpp multiple.cpp multiple.h)
 add_executable(euler-004 euler-004.cpp palindrome.cpp palindrome.h)
@@ -14,6 +15,9 @@ add_executable(euler-009 euler-009.cpp)
 
 # tests
 include(CTest)
+
+add_test(euler-001-runs euler-001)
+set_tests_properties(euler-001-runs PROPERTIES PASS_REGULAR_EXPRESSION "^233168\n$")
 
 add_test(euler-003-runs euler-003)
 set_tests_properties(euler-003-runs PROPERTIES WILL_FAIL true)
