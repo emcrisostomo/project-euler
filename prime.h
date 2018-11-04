@@ -9,11 +9,11 @@
 
 namespace prime
 {
-  typedef void (*A)(unsigned long i, void *context);
+  typedef void (*prime_found_callback)(unsigned long i, void *context);
 
   unsigned long upper_bound_of_nth_prime(unsigned int nth_prime);
   std::vector<bool> sieve_of_erathostenes(size_t size);
-  std::vector<bool> sieve_of_erathostenes(size_t size, A prime_found_callback, void *context);
+  std::vector<bool> sieve_of_erathostenes(size_t size, prime_found_callback prime_found_callback, void *context);
 };
 
 

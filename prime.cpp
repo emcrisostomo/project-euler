@@ -17,7 +17,7 @@ std::vector<bool> prime::sieve_of_erathostenes(size_t size)
 
 
 std::vector<bool> prime::sieve_of_erathostenes(size_t size,
-                                               prime::A prime_found_callback,
+                                               prime::prime_found_callback prime_found_callback,
                                                void *context)
 {
   std::vector<bool> primes(size, true);
