@@ -44,5 +44,8 @@ set_tests_properties(euler-003-13195 PROPERTIES PASS_REGULAR_EXPRESSION "^29\n$"
 add_test(euler-003-600851475143 euler-003 600851475143)
 set_tests_properties(euler-003-600851475143 PROPERTIES PASS_REGULAR_EXPRESSION "^6857\n$")
 
+add_test(euler-007-runs euler-007)
+set_tests_properties(euler-007-runs PROPERTIES PASS_REGULAR_EXPRESSION "^104743\n$")
+
 add_test(euler-010-runs euler-010)
 set_tests_properties(euler-010-runs PROPERTIES PASS_REGULAR_EXPRESSION "^142913828922\n$")

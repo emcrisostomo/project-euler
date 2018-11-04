@@ -8,20 +8,7 @@ int main()
   auto upper_bound = prime::upper_bound_of_nth_prime(nth);
 
   // Let's create one element more to address the nth prime without shifting by one
-  std::vector<bool> primes(upper_bound + 1, true);
-  primes[0] = false;
-  primes[1] = false;
-
-  for (auto i = 2; i < primes.size(); ++i)
-  {
-    if (!primes[i])
-      continue;
-
-    for (auto j = i + i; j < primes.size(); j += i)
-    {
-      primes[j] = false;
-    }
-  }
+  std::vector<bool> primes = prime::sieve_of_erathostenes(upper_bound + 1);
 
   unsigned int counter = 0;
   unsigned int nth_prime = 0;
