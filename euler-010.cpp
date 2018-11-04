@@ -15,13 +15,13 @@ int main()
 
   unsigned long sum_of_primes = 0;
 
-  for (auto i = 2; i < primes.size(); ++i)
+  for (unsigned long i = 2; i < primes.size(); ++i)
   {
     if (!primes[i])
       continue;
 
     sum_of_primes += i;
-    for (auto j = i + i; j < primes.size(); j += i)
+    for (unsigned long j = i * i; j < primes.size(); j += i)
     {
       primes[j] = false;
     }
