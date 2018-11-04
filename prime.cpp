@@ -12,22 +12,7 @@ unsigned long prime::upper_bound_of_nth_prime(unsigned int n)
 
 std::vector<bool> prime::sieve_of_erathostenes(size_t size)
 {
-  std::vector<bool> primes(size, true);
-  primes[0] = false;
-  primes[1] = false;
-
-  for (unsigned long i = 2; i < primes.size(); ++i)
-  {
-    if (!primes[i])
-      continue;
-
-    for (unsigned long j = i * i; j < primes.size(); j += i)
-    {
-      primes[j] = false;
-    }
-  }
-
-  return primes;
+  return sieve_of_erathostenes(size, nullptr, nullptr);
 }
 
 
@@ -44,7 +29,7 @@ std::vector<bool> prime::sieve_of_erathostenes(size_t size,
     if (!primes[i])
       continue;
 
-    prime_found_callback(i, context);
+    if (prime_found_callback != nullptr) prime_found_callback(i, context);
 
     for (unsigned long j = i * i; j < primes.size(); j += i)
     {
