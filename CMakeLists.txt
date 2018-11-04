@@ -12,6 +12,7 @@ add_executable(euler-006 euler-006.cpp squares.cpp squares.h sum.cpp sum.h)
 add_executable(euler-007 euler-007.cpp prime.cpp prime.h)
 add_executable(euler-008 euler-008.cpp)
 add_executable(euler-009 euler-009.cpp)
+add_executable(euler-010 euler-010.cpp)
 
 # tests
 include(CTest)
@@ -42,3 +43,6 @@ set_tests_properties(euler-003-13195 PROPERTIES PASS_REGULAR_EXPRESSION "^29\n$"
 
 add_test(euler-003-600851475143 euler-003 600851475143)
 set_tests_properties(euler-003-600851475143 PROPERTIES PASS_REGULAR_EXPRESSION "^6857\n$")
+
+add_test(euler-010-runs euler-010)
+set_tests_properties(euler-010-runs PROPERTIES PASS_REGULAR_EXPRESSION "^142913828922\n$")
