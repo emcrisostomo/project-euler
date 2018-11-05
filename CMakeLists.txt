@@ -13,6 +13,7 @@ add_executable(euler-007 euler-007.cpp prime.cpp prime.h)
 add_executable(euler-008 euler-008.cpp)
 add_executable(euler-009 euler-009.cpp)
 add_executable(euler-010 euler-010.cpp prime.cpp prime.h)
+add_executable(euler-011 euler-011.cpp)
 
 # tests
 include(CTest)
