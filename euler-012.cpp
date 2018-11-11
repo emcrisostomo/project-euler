@@ -52,7 +52,6 @@ int main()
   // The problem now consists of finding the prime factorization of consecutive
   // integers until $D(n/2) D(n+1) > 500$.
 
-  unsigned long result;
   unsigned long n = 3;
   unsigned int n_div = 0;
   unsigned int np1_div = 0;
