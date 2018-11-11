@@ -39,3 +39,29 @@ std::vector<bool> prime::sieve_of_erathostenes(size_t size,
 
   return primes;
 }
+
+std::map<unsigned long, unsigned int> prime::factorize(unsigned long number)
+{
+  auto v = std::map<unsigned long, unsigned int>();
+
+  // Return empty factorizations for non-composite numbers.
+  if (number == 0) return v;
+  if (number == 1) return v;
+
+  auto n = number;
+
+  for (auto i = 2; i <= n / 2; ++i)
+  {
+    if (n % i == 0)
+    {
+      v[i] += 1;
+
+      n /= i;
+      i = 1;
+    }
+  }
+
+  if (n != 1) v[n] += 1;
+
+  return v;
+}
