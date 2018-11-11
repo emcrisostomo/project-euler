@@ -65,3 +65,21 @@ std::map<unsigned long, unsigned int> prime::factorize(unsigned long number)
 
   return v;
 }
+
+unsigned long long prime::largest_prime_factor_of(unsigned long long number)
+{
+  if (number == 0) return 0;
+
+  auto n = number;
+
+  for (auto i = 2; i <= n / 2; ++i)
+  {
+    if (n % i == 0)
+    {
+      n /= i;
+      i = 1;
+    }
+  }
+
+  return n;
+}

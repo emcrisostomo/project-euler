@@ -26,21 +26,3 @@ unsigned int multiple::of_all(unsigned int from, unsigned int to)
 
   return lcm;
 }
-
-unsigned long long multiple::largest_prime_factor_of(unsigned long long number)
-{
-  if (number == 0) return 0;
-
-  auto n = number;
-
-  for (auto i = 2; i <= n / 2; ++i)
-  {
-    if (n % i == 0)
-    {
-      n /= i;
-      i = 1;
-    }
-  }
-
-  return n;
-}

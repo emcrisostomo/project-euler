@@ -1,6 +1,6 @@
 
 #include <iostream>
-#include "multiple.h"
+#include "prime.h"
 #include <string>
 
 int main(int argc, char *argv[])
@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     try
     {
       auto n = std::stoull(argv[i]);
-      std::cout << multiple::largest_prime_factor_of(n) << "\n";
+      std::cout << prime::largest_prime_factor_of(n) << "\n";
     }
     catch (std::invalid_argument& ex)
     {

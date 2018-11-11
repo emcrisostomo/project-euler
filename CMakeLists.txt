@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_executable(euler-001 euler-001.cpp)
 add_executable(euler-002 euler-002.cpp fibonacci.cpp fibonacci.h palindrome.cpp palindrome.h)
-add_executable(euler-003 euler-003.cpp multiple.cpp multiple.h)
+add_executable(euler-003 euler-003.cpp prime.cpp prime.h)
 add_executable(euler-004 euler-004.cpp palindrome.cpp palindrome.h)
 add_executable(euler-005 euler-005.cpp multiple.cpp multiple.h)
 add_executable(euler-006 euler-006.cpp squares.cpp squares.h sum.cpp sum.h)

@@ -9,7 +9,6 @@
 namespace multiple
 {
   unsigned int of_all(unsigned int from, unsigned int to);
-  unsigned long long largest_prime_factor_of(unsigned long long number);
 };
 
 
