@@ -15,6 +15,7 @@ add_executable(euler-009 euler-009.cpp)
 add_executable(euler-010 euler-010.cpp prime.cpp prime.h)
 add_executable(euler-011 euler-011.cpp)
 add_executable(euler-012 euler-012.cpp prime.cpp prime.h)
+add_executable(euler-013 euler-013.cpp)
 
 # tests
 include(CTest)
@@ -54,3 +55,6 @@ set_tests_properties(euler-010-runs PROPERTIES PASS_REGULAR_EXPRESSION "^1429138
 
 add_test(euler-011-runs euler-011)
 set_tests_properties(euler-011-runs PROPERTIES PASS_REGULAR_EXPRESSION "^70600674\n$")
+
+add_test(euler-012-runs euler-012)
+set_tests_properties(euler-012-runs PROPERTIES PASS_REGULAR_EXPRESSION "^76576500\n$")
