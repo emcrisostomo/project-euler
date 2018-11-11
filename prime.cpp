@@ -68,18 +68,7 @@ std::map<unsigned long, unsigned int> prime::factorize(unsigned long number)
 
 unsigned long long prime::largest_prime_factor_of(unsigned long long number)
 {
-  if (number == 0) return 0;
+  const auto& factorization = prime::factorize(number);
 
-  auto n = number;
-
-  for (auto i = 2; i <= n / 2; ++i)
-  {
-    if (n % i == 0)
-    {
-      n /= i;
-      i = 1;
-    }
-  }
-
-  return n;
+  return factorization.empty() ? 0 : factorization.rbegin()->first;
 }
