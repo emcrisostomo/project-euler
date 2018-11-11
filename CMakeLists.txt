@@ -29,7 +29,7 @@ add_test(euler-003-0 euler-003 0)
 set_tests_properties(euler-003-0 PROPERTIES PASS_REGULAR_EXPRESSION "^0\n$")
 
 add_test(euler-003-1 euler-003 1)
-set_tests_properties(euler-003-1 PROPERTIES PASS_REGULAR_EXPRESSION "^1\n$")
+set_tests_properties(euler-003-1 PROPERTIES PASS_REGULAR_EXPRESSION "^0\n$")
 
 add_test(euler-003-2 euler-003 2)
 set_tests_properties(euler-003-2 PROPERTIES PASS_REGULAR_EXPRESSION "^2\n$")
