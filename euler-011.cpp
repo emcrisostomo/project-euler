@@ -96,6 +96,17 @@ int main()
 
         max = (max > product) ? max : product;
       }
+
+      // 135-degree product
+      if (r >= diagonal_size - 1 && c >= diagonal_size - 1)
+      {
+        unsigned int product = matrix[r][c]
+                               * matrix[r - 1][c - 1]
+                               * matrix[r - 2][c - 2]
+                               * matrix[r - 3][c - 3];
+
+        max = (max > product) ? max : product;
+      }
     }
 
 
