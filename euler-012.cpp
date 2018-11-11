@@ -64,7 +64,7 @@ int main()
     np1_div = find_divisor_count(n);
   }
 
-  std::cout << (n * (n + 1) / 2) << "\n";
+  std::cout << (n * (n - 1) / 2) << "\n";
   return 0;
 }
 
@@ -72,10 +72,16 @@ unsigned int find_divisor_count(unsigned long n)
 {
   auto prime_factors = prime::factorize(n);
 
+  if (prime_factors.empty()) return 1;
+
+  // Adjusting 2's frequency, as explained above
+  if (prime_factors[2] > 0) --prime_factors[2];
+
+  unsigned int divisors = 1;
   for (const auto& pf : prime_factors)
   {
-    std::cout << "Divisor " << pf.first << " found " << pf.second << " times\n";
+    divisors *= (pf.second + 1);
   }
 
-  return 0;
+  return divisors;
 }
