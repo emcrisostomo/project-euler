@@ -3,6 +3,12 @@ project(project-euler)
 
 set(CMAKE_CXX_STANDARD 14)
 
+# Add MacPorts
+include_directories(/opt/local/include)
+link_directories(/opt/local/lib)
+find_library(HAVE_GMP gmp)
+find_library(HAVE_GMPXX gmpxx)
+
 add_executable(euler-001 euler-001.cpp)
 add_executable(euler-002 euler-002.cpp fibonacci.cpp fibonacci.h palindrome.cpp palindrome.h)
 add_executable(euler-003 euler-003.cpp prime.cpp prime.h)
@@ -16,6 +22,8 @@ add_executable(euler-010 euler-010.cpp prime.cpp prime.h)
 add_executable(euler-011 euler-011.cpp)
 add_executable(euler-012 euler-012.cpp prime.cpp prime.h)
 add_executable(euler-013 euler-013.cpp)
+target_link_libraries(euler-013 PRIVATE gmpxx)
+target_link_libraries(euler-013 PRIVATE gmp)
 
 # tests
 include(CTest)
