@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cmath>
+#include <vector>
+
+// 2^15 = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26.
+//
+// What is the sum of the digits of the number 2^1000?
+//
+int main()
+{
+  unsigned long sum{0};
+  auto digits = static_cast<unsigned long>(floor(1 + 1000 * log(2) / log(10)));
+  std::vector<int> product(digits);
+  product[0] = 1;
+
+  for (auto i = 0; i < 1000; ++i)
+  {
+    unsigned int carry{0};
+
+    for (auto& d : product)
+    {
+      unsigned int current = 2 * d + carry;
+
+      d = current % 10;
+      carry = current / 10;
+    }
+  }
+
+  for (const auto& d : product)
+    sum += d;
+
+  std::cout << sum << "\n";
+  return 0;
+}
+
+

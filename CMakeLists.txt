@@ -25,6 +25,7 @@ add_executable(euler-013 euler-013.cpp)
 target_link_libraries(euler-013 PRIVATE gmpxx)
 target_link_libraries(euler-013 PRIVATE gmp)
 add_executable(euler-014 euler-014.cpp)
+add_executable(euler-016 euler-016.cpp)
 
 # tests
 include(CTest)
@@ -73,3 +74,6 @@ set_tests_properties(euler-013-runs PROPERTIES PASS_REGULAR_EXPRESSION "^5537376
 
 add_test(euler-014-runs euler-014)
 set_tests_properties(euler-014-runs PROPERTIES PASS_REGULAR_EXPRESSION "^837799\n$")
+
+add_test(euler-016-runs euler-016)
+set_tests_properties(euler-016-runs PROPERTIES PASS_REGULAR_EXPRESSION "^1366\n$")
