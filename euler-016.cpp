@@ -12,18 +12,23 @@ int main()
   auto digits = static_cast<unsigned long>(floor(1 + 1000 * log(2) / log(10)));
   std::vector<int> product(digits);
   product[0] = 1;
+  unsigned int current_msd = 0;
 
   for (auto i = 0; i < 1000; ++i)
   {
     unsigned int carry{0};
 
-    for (auto& d : product)
+    for (auto d = 0; d <= current_msd; ++d)
     {
-      unsigned int current = 2 * d + carry;
+      unsigned int current = 2 * product[d] + carry;
 
-      d = current % 10;
+      product[d] = current % 10;
       carry = current / 10;
+      assert(carry <= 1);
     }
+
+    if (carry > 0) ++current_msd;
+    if (current_msd < product.size()) product[current_msd] += carry;
   }
 
   for (const auto& d : product)
