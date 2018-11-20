@@ -8,13 +8,15 @@
 //
 int main()
 {
+  unsigned int exponent = 1000;
+
   unsigned long sum{0};
-  auto digits = static_cast<unsigned long>(floor(1 + 1000 * log(2) / log(10)));
+  auto digits = static_cast<unsigned long>(floor(1 + exponent * log(2) / log(10)));
   std::vector<int> product(digits);
   product[0] = 1;
   unsigned int current_msd = 0;
 
-  for (auto i = 0; i < 1000; ++i)
+  for (auto i = 0; i < exponent; ++i)
   {
     unsigned int carry{0};
 
