@@ -2,16 +2,22 @@
 #include <cmath>
 #include <vector>
 
+unsigned long exp_two(unsigned int exponent);
+
 // 2^15 = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26.
 //
 // What is the sum of the digits of the number 2^1000?
 //
 int main()
 {
-  unsigned int exponent = 1000;
+  std::cout << exp_two(1000) << "\n";
+  return 0;
+}
 
+unsigned long exp_two(unsigned int exponent)
+{
   unsigned long sum{0};
-  auto digits = static_cast<unsigned long>(floor(1 + exponent * log(2) / log(10)));
+  const auto digits = static_cast<unsigned long>(floor(1 + exponent * log(2) / log(10)));
   std::vector<int> product(digits);
   product[0] = 1;
   unsigned int current_msd = 0;
@@ -36,8 +42,7 @@ int main()
   for (const auto& d : product)
     sum += d;
 
-  std::cout << sum << "\n";
-  return 0;
+  return sum;
 }
 
 
