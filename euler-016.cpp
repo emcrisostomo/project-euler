@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
+#include <cassert>
 
 unsigned long exp_two(unsigned int exponent);
 
