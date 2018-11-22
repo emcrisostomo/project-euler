@@ -27,6 +27,7 @@ target_link_libraries(euler-013 PRIVATE gmp)
 add_executable(euler-014 euler-014.cpp)
 add_executable(euler-016 euler-016.cpp)
 add_executable(euler-018 euler-018.cpp)
+add_executable(euler-067 euler-067.cpp)
 
 # tests
 include(CTest)
