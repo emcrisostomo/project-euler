@@ -51,15 +51,10 @@ int main(int argc, char *argv[])
   while (triangle.size() > 1)
     triangle::reduce_max_path(triangle);
 
-  if (!triangle.empty() && !triangle[0].empty())
-  {
-    std::cout << triangle[0][0] << "\n";
-    return 0;
-  }
+  if (triangle.empty() || triangle[0].empty())
+    return 2;
 
-  return 2;
+  std::cout << triangle[0][0] << "\n";
+  return 0;
+
 }
-
-
-
-
