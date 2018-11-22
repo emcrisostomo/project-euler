@@ -4,8 +4,9 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <cassert>
 
-void reduce(std::vector<std::vector<unsigned long>>& vector);
+void reduce(std::vector<std::vector<unsigned long>>& triangle);
 
 // By starting at the top of the triangle below and moving to adjacent numbers on the row below, the maximum total from top to bottom is 23.
 //
@@ -19,9 +20,15 @@ void reduce(std::vector<std::vector<unsigned long>>& vector);
 // Find the maximum total from top to bottom in triangle.txt, a 15K text file
 // containing a triangle with one-hundred rows.
 //
-int main()
+int main(int argc, char *argv[])
 {
-  std::fstream infile("p067_triangle.txt");
+  if (argc != 2)
+  {
+    std::cerr << "Invalid number of arguments: " << argc << "\n";
+    return 1;
+  }
+
+  std::fstream infile(argv[1]);
   std::string line;
   std::vector<std::vector<unsigned long>> triangle;
 
@@ -31,7 +38,7 @@ int main()
     std::vector<std::string> results(std::istream_iterator<std::string>{iss},
                                      std::istream_iterator<std::string>());
 
-    std::vector<unsigned long> row(results.size());
+    std::vector<unsigned long> row;
 
     for (const auto& r : results)
     {
@@ -41,28 +48,31 @@ int main()
     triangle.push_back(row);
   }
 
-  std::cout << triangle[0][0] << "\n";
-
   while (triangle.size() > 1)
     reduce(triangle);
 
-  std::cout << triangle[0][0] << "\n";
-  return 0;
+  if (!triangle.empty() && !triangle[0].empty())
+  {
+    std::cout << triangle[0][0] << "\n";
+    return 0;
+  }
+
+  return 2;
 }
 
-void reduce(std::vector<std::vector<unsigned long>>& vector)
+void reduce(std::vector<std::vector<unsigned long>>& triangle)
 {
-  if (vector.empty())
+  if (triangle.empty())
   {
-    vector.push_back({0});
+    triangle.push_back({0});
     return;
   }
 
-  if (vector.size() == 1) return;
+  if (triangle.size() == 1) return;
 
-  const auto& removed = vector.back();
-  vector.pop_back();
-  auto& last = vector.back();
+  const auto removed = std::move(triangle.back());
+  triangle.pop_back();
+  auto& last = triangle.back();
 
   for (auto i = 0; i < last.size(); ++i)
   {
