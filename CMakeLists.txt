@@ -27,6 +27,7 @@ target_link_libraries(euler-013 PRIVATE gmp)
 add_executable(euler-014 euler-014.cpp)
 add_executable(euler-016 euler-016.cpp)
 add_executable(euler-018 euler-018.cpp triangle.cpp triangle.h)
+add_executable(euler-019 euler-019.cpp)
 add_executable(euler-067 euler-067.cpp triangle.cpp triangle.h)
 
 # tests
@@ -82,6 +83,9 @@ set_tests_properties(euler-016-runs PROPERTIES PASS_REGULAR_EXPRESSION "^1366\n$
 
 add_test(euler-018-runs euler-018)
 set_tests_properties(euler-018-runs PROPERTIES PASS_REGULAR_EXPRESSION "^1074\n$")
+
+add_test(euler-019-runs euler-019)
+set_tests_properties(euler-019-runs PROPERTIES PASS_REGULAR_EXPRESSION "^171\n$")
 
 add_test(euler-067-runs euler-067 ${PROJECT_SOURCE_DIR}/p067_triangle.txt)
 set_tests_properties(euler-067-runs PROPERTIES PASS_REGULAR_EXPRESSION "^7273\n$")
