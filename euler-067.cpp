@@ -39,6 +39,7 @@ int main(int argc, char *argv[])
                                      std::istream_iterator<std::string>());
 
     std::vector<unsigned long> row;
+    row.reserve(results.size());
 
     for (const auto& r : results)
     {
