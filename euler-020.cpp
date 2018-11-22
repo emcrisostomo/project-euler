@@ -20,7 +20,7 @@ int main()
   unsigned long sum{0};
   for (auto c : n_str)
   {
-    sum += std::stoul(std::string(1, c), nullptr);
+    sum += c - '0';
   }
 
   std::cout << sum << "\n";
