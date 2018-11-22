@@ -1,9 +1,6 @@
 #include <iostream>
 #include <vector>
-
-unsigned long exp_two(unsigned int exponent);
-
-void reduce(std::vector<std::vector<unsigned int>>& vector);
+#include "triangle.h"
 
 // By starting at the top of the triangle below and moving to adjacent numbers on the row below, the maximum total from top to bottom is 23.
 //
@@ -34,7 +31,7 @@ void reduce(std::vector<std::vector<unsigned int>>& vector);
 //
 int main()
 {
-  std::vector<std::vector<unsigned int>> triangle;
+  std::vector<std::vector<unsigned long>> triangle;
   triangle.push_back({75});
   triangle.push_back({95, 64});
   triangle.push_back({17, 47, 82});
@@ -52,25 +49,15 @@ int main()
   triangle.push_back({04, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23});
 
   while (triangle.size() > 1)
-    reduce(triangle);
+    triangle::reduce_max_path(triangle);
 
-  std::cout << triangle[0][0] << "\n";
-  return 0;
-}
-
-void reduce(std::vector<std::vector<unsigned int>>& vector)
-{
-  if (vector.size() == 1) return;
-
-  const auto& removed = vector.back();
-  vector.pop_back();
-  auto& last = vector.back();
-
-  for (auto i = 0; i < last.size(); ++i)
+  if (!triangle.empty() && !triangle[0].empty())
   {
-    last[i] += std::max(removed[i], removed[i + 1]);
+    std::cout << triangle[0][0] << "\n";
+    return 0;
   }
-}
 
+  return 2;
+}
 
 

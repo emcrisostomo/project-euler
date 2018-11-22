@@ -5,8 +5,7 @@
 #include <sstream>
 #include <vector>
 #include <cassert>
-
-void reduce(std::vector<std::vector<unsigned long>>& triangle);
+#include "triangle.h"
 
 // By starting at the top of the triangle below and moving to adjacent numbers on the row below, the maximum total from top to bottom is 23.
 //
@@ -50,7 +49,7 @@ int main(int argc, char *argv[])
   }
 
   while (triangle.size() > 1)
-    reduce(triangle);
+    triangle::reduce_max_path(triangle);
 
   if (!triangle.empty() && !triangle[0].empty())
   {
@@ -61,25 +60,6 @@ int main(int argc, char *argv[])
   return 2;
 }
 
-void reduce(std::vector<std::vector<unsigned long>>& triangle)
-{
-  if (triangle.empty())
-  {
-    triangle.push_back({0});
-    return;
-  }
-
-  if (triangle.size() == 1) return;
-
-  const auto removed = std::move(triangle.back());
-  triangle.pop_back();
-  auto& last = triangle.back();
-
-  for (auto i = 0; i < last.size(); ++i)
-  {
-    last[i] += std::max(removed[i], removed[i + 1]);
-  }
-}
 
 
 
