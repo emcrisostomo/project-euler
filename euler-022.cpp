@@ -19,8 +19,7 @@
 //
 int main()
 {
-
-  unsigned int sum {0};
+  unsigned int sum{0};
 
   std::cout << sum << "\n";
   return 0;
