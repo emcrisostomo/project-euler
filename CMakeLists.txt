@@ -32,6 +32,7 @@ add_executable(euler-020 euler-020.cpp)
 target_link_libraries(euler-020 PRIVATE gmpxx)
 target_link_libraries(euler-020 PRIVATE gmp)
 add_executable(euler-021 euler-021.cpp divisors.cpp divisors.h)
+add_executable(euler-022 euler-022.cpp)
 add_executable(euler-067 euler-067.cpp triangle.cpp triangle.h)
 
 # tests
