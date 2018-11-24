@@ -13,7 +13,7 @@ std::vector<unsigned int> divisors::proper_divisors_of(unsigned int n)
   d.push_back(1);
   const auto s = static_cast<const unsigned int>(sqrt(n));
 
-  for (unsigned int i = 2; i < s; ++i)
+  for (unsigned int i = 2; i <= s; ++i)
   {
     if (n % i == 0)
     {
@@ -22,7 +22,8 @@ std::vector<unsigned int> divisors::proper_divisors_of(unsigned int n)
     }
   }
 
-  if (n % s == 0) d.push_back(s);
+  // sqrt(n) is inserted twice when n is a square number.
+  if (s * s == n) d.pop_back();
 
   return d;
 }
