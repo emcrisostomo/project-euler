@@ -1,5 +1,6 @@
 #include <iostream>
 #include <numeric>
+#include <set>
 #include "divisors.h"
 
 // A perfect number is a number for which the sum of its proper divisors is
@@ -22,13 +23,36 @@
 //
 int main()
 {
-  for (auto i=0; i < 28123; ++i)
+  const unsigned int limit = 28123;
+  std::vector<unsigned int> abundant_numbers;
+  std::vector<bool> sums_of_abundant_numbers(limit + 1, false);
+
+  for (auto i = 2; i <= limit; ++i)
   {
     auto d = divisors::proper_divisors_of(i);
-    std::accumulate(d.begin(), d.end(), 0u);
+    auto sum = std::accumulate(d.begin(), d.end(), 0u);
+
+    if (sum > i) abundant_numbers.push_back(i);
+  }
+
+  for (auto i = 0; i < abundant_numbers.size(); ++i)
+  {
+    for (auto j = i; j < abundant_numbers.size(); ++j)
+    {
+      auto sum = abundant_numbers[i] + abundant_numbers[j];
+
+      if (sum > limit) break;
+
+      sums_of_abundant_numbers[sum] = true;
+    }
   }
 
   unsigned int sum{0};
+  for (auto i = 1; i < sums_of_abundant_numbers.size(); ++i)
+  {
+    if (sums_of_abundant_numbers[i] == false)
+      sum += i;
+  }
 
   std::cout << sum << "\n";
   return 0;
