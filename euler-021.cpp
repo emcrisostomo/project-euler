@@ -3,10 +3,8 @@
 #include <map>
 #include <vector>
 #include <cmath>
-#include <algorithm>
+#include <numeric>
 #include "divisors.h"
-
-unsigned int sum_of(std::vector<unsigned int> v);
 
 // Let d(n) be defined as the sum of proper divisors of n (numbers less than n
 // which divide evenly into n).  If d(a) = b and d(b) = a, where a ≠ b, then a
@@ -26,7 +24,7 @@ int main()
   for (unsigned int i = 1; i < 10000; ++i)
   {
     std::vector<unsigned int> d = divisors::proper_divisors_of(i);
-    sum_of_divisors_by_n[i] = sum_of(d);
+    sum_of_divisors_by_n[i] = std::accumulate(d.begin(), d.end(), 0u);
   }
 
   for (unsigned int i = 1; i < 10000; ++i)
@@ -37,23 +35,8 @@ int main()
       amicable_numbers.push_back(i);
   }
 
-  unsigned int sum{0};
-  std::for_each(amicable_numbers.begin(),
-                amicable_numbers.end(),
-                [&sum](auto n)
-                { sum += n; });
+  unsigned int sum = std::accumulate(amicable_numbers.begin(), amicable_numbers.end(), 0u);
 
   std::cout << sum << "\n";
   return 0;
-}
-
-unsigned int sum_of(std::vector<unsigned int> v)
-{
-  unsigned int sum_of_divisors{0};
-  std::for_each(v.begin(),
-                v.end(),
-                [&sum_of_divisors](auto f)
-                { sum_of_divisors += f; });
-
-  return sum_of_divisors;
 }
