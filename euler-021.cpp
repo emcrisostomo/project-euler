@@ -4,8 +4,8 @@
 #include <vector>
 #include <cmath>
 #include <algorithm>
+#include "divisors.h"
 
-std::vector<unsigned int> proper_divisors(unsigned int n);
 unsigned int sum_of(std::vector<unsigned int> v);
 
 // Let d(n) be defined as the sum of proper divisors of n (numbers less than n
@@ -25,7 +25,7 @@ int main()
 
   for (unsigned int i = 1; i < 10000; ++i)
   {
-    std::vector<unsigned int> d = proper_divisors(i);
+    std::vector<unsigned int> d = divisors::proper_divisors_of(i);
     sum_of_divisors_by_n[i] = sum_of(d);
   }
 
@@ -45,28 +45,6 @@ int main()
 
   std::cout << sum << "\n";
   return 0;
-}
-
-std::vector<unsigned int> proper_divisors(unsigned int n)
-{
-  if (n == 0) return {};
-
-  std::vector<unsigned int> d;
-  d.push_back(1);
-  const auto s = static_cast<const unsigned int>(sqrt(n));
-
-  for (unsigned int i = 2; i < s; ++i)
-  {
-    if (n % i == 0)
-    {
-      d.push_back(i);
-      d.push_back(n / i);
-    }
-  }
-
-  if (n % s == 0) d.push_back(s);
-
-  return d;
 }
 
 unsigned int sum_of(std::vector<unsigned int> v)
