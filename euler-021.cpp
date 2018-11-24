@@ -21,6 +21,19 @@ int main()
   std::map<unsigned int, unsigned int> sum_of_divisors_by_n;
   std::vector<unsigned int> amicable_numbers;
 
+  // Since amicable numbers are pairs (a,b) where a != b, we could collapse the
+  // two loops into a single one using the following algorithm:
+  //   * Find the set s of divisors of i.
+  //   * Calculate sum d(i) of elements of d.
+  //   * If d(i) < i we can continue the loop because this case has been checked
+  //     by a previous iteration, when j = d(i) has been processed.
+  //   * If d(i) == i we can continue since i cannot be amicable with itself by
+  //     definition.
+  //   * If j = d(i) > i, then calculate d(j) and if d(j) == d(i) then (i,j) are
+  //     an amicable pair.
+  //
+  // However, I'll keep this implementation because it's easier to read and
+  // performs well enough.
   for (unsigned int i = 1; i < 10000; ++i)
   {
     std::vector<unsigned int> d = divisors::proper_divisors_of(i);
