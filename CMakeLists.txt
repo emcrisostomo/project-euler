@@ -38,6 +38,7 @@ add_executable(euler-024 euler-024.cpp)
 add_executable(euler-025 euler-025.cpp)
 target_link_libraries(euler-025 PRIVATE gmpxx)
 target_link_libraries(euler-025 PRIVATE gmp)
+add_executable(euler-026 euler-026.cpp)
 add_executable(euler-067 euler-067.cpp triangle.cpp triangle.h)
 
 # tests
