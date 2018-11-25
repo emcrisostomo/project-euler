@@ -2,7 +2,9 @@
 #include <vector>
 #include <algorithm>
 
-unsigned long find_next_k(const std::vector<unsigned int>& vector);
+unsigned long find_next_k(const std::vector<unsigned int>& permutation);
+unsigned long find_next_l(const std::vector<unsigned int>& permutation, unsigned long k);
+void print_permutation(const std::vector<unsigned int>& permutation);
 
 void print_permutation(const std::vector<unsigned int>& vector);
 
@@ -23,11 +25,7 @@ int main()
   while ((k = find_next_k(permutation)) < permutation.size())
   {
     ++index;
-    unsigned long l = k + 1;
-    for (unsigned long i = k + 1; i < permutation.size(); ++i)
-    {
-      if (permutation[k] < permutation[i]) l = i;
-    }
+    unsigned long l = find_next_l(permutation, k);
 
     std::swap(permutation[k], permutation[l]);
     std::reverse(permutation.begin() + k + 1, permutation.end());
@@ -38,22 +36,33 @@ int main()
   return 0;
 }
 
-void print_permutation(const std::vector<unsigned int>& vector)
+unsigned long find_next_l(const std::vector<unsigned int>& permutation, unsigned long k)
 {
-  std::for_each(vector.begin(),
-                vector.end(),
+  unsigned long l = k + 1;
+  for (unsigned long i = k + 1; i < permutation.size(); ++i)
+  {
+    if (permutation[k] < permutation[i]) l = i;
+  }
+
+  return l;
+}
+
+void print_permutation(const std::vector<unsigned int>& permutation)
+{
+  std::for_each(permutation.begin(),
+                permutation.end(),
                 [](const auto& n)
                 { std::cout << n; });
   std::cout << "\n";
 }
 
-unsigned long find_next_k(const std::vector<unsigned int>& vector)
+unsigned long find_next_k(const std::vector<unsigned int>& permutation)
 {
-  unsigned long ret = vector.size();
+  unsigned long ret = permutation.size();
 
-  for (unsigned long k = 0; k < vector.size() - 1; ++k)
+  for (unsigned long k = 0; k < permutation.size() - 1; ++k)
   {
-    if (vector[k] < vector[k + 1]) ret = k;
+    if (permutation[k] < permutation[k + 1]) ret = k;
   }
 
   return ret;
