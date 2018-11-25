@@ -6,8 +6,6 @@ unsigned long find_next_k(const std::vector<unsigned int>& permutation);
 unsigned long find_next_l(const std::vector<unsigned int>& permutation, unsigned long k);
 void print_permutation(const std::vector<unsigned int>& permutation);
 
-void print_permutation(const std::vector<unsigned int>& vector);
-
 // A permutation is an ordered arrangement of objects.  For example, 3124 is one possible permutation of the digits 1,
 // 2, 3 and 4.  If all of the permutations are listed numerically or alphabetically, we call it lexicographic order.
 // The lexicographic permutations of 0, 1 and 2 are:
