@@ -10,6 +10,19 @@ unsigned long prime::upper_bound_of_nth_prime(unsigned int n)
   return static_cast<unsigned long>(ceil(n * (log(n) + log(log(n)))));
 }
 
+std::vector<unsigned long> prime::get_primes_smaller_than(size_t limit)
+{
+  std::vector<unsigned long> primes;
+  auto sieve = prime::sieve_of_erathostenes(limit);
+
+  for (auto i = 0; i < sieve.size(); ++i)
+  {
+    if (sieve[i]) primes.push_back(i);
+  }
+
+  return primes;
+}
+
 std::vector<bool> prime::sieve_of_erathostenes(size_t size)
 {
   return sieve_of_erathostenes(size, nullptr, nullptr);
