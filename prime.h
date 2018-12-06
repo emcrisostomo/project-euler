@@ -18,6 +18,7 @@ namespace prime
   std::map<unsigned long, unsigned int> factorize(unsigned long number);
   unsigned long long largest_prime_factor_of(unsigned long long number);
   std::vector<unsigned long> get_primes_smaller_than(size_t limit);
+  bool is_prime(unsigned long p);
 };
 
 

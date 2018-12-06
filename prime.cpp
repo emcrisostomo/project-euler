@@ -85,3 +85,23 @@ unsigned long long prime::largest_prime_factor_of(unsigned long long number)
 
   return factorization.empty() ? 0 : factorization.rbegin()->first;
 }
+
+bool prime::is_prime(unsigned long number)
+{
+  // Return empty factorizations for non-composite numbers.
+  if (number == 0) return false;
+  if (number == 1) return false;
+  if (number == 2) return true;
+
+  auto n = number;
+
+  for (auto i = 2; i <= n / 2; ++i)
+  {
+    if (n % i == 0)
+    {
+      return false;
+    }
+  }
+
+  return true;
+}
