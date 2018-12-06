@@ -1,6 +1,8 @@
 #include <iostream>
 #include "prime.h"
 
+long get_next_f(unsigned int n, const long& ac, const unsigned long& bc);
+
 // Euler discovered the remarkable quadratic formula:
 //
 //   n^2+n+41
@@ -62,13 +64,8 @@ int main()
       const auto& ac = a_range[a];
       const auto& bc = b_range[b];
 
-      long f = n * n + ac * n + bc;
-      if (f < 0) f *= -1;
-
-      while (prime::is_prime(static_cast<unsigned long>(f)))
+      while (prime::is_prime(static_cast<unsigned long>(get_next_f(n, ac, bc))))
       {
-        f = n * n + ac * n + bc;
-        if (f < 0) f *= -1;
         ++n;
       }
 
@@ -84,4 +81,11 @@ int main()
   return 0;
 }
 
+long get_next_f(unsigned int n, const long& ac, const unsigned long& bc)
+{
+  long f = n * n + ac * n + bc;
+  if (f < 0) f *= -1;
+
+  return f;
+}
 
