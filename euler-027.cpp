@@ -1,5 +1,6 @@
 #include <iostream>
 #include "prime.h"
+#include <cstdlib>
 
 long get_next_f(unsigned int n, const long& ac, const unsigned long& bc);
 
@@ -84,8 +85,7 @@ int main()
 long get_next_f(unsigned int n, const long& ac, const unsigned long& bc)
 {
   long f = n * n + ac * n + bc;
-  if (f < 0) f *= -1;
 
-  return f;
+  return std::abs(f);
 }
 
