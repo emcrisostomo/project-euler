@@ -84,8 +84,6 @@ int main()
 
 long get_next_f(unsigned int n, const long& ac, const unsigned long& bc)
 {
-  long f = n * n + ac * n + bc;
-
-  return std::abs(f);
+  return std::abs((long)(n * n + ac * n + bc));
 }
 
