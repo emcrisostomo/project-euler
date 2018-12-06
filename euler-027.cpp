@@ -41,29 +41,17 @@ int main()
   //   - 1 + a + b must be a prime number -> a is odd and a > -b
   auto sieve = prime::sieve_of_erathostenes(1000000);
   auto b_range = prime::get_primes_smaller_than(1000);
-  std::vector<long> a_range;
-  a_range.reserve(b_range.size() * 2);
-
-  for (auto iter = b_range.rbegin(); iter != b_range.rend(); ++iter)
-  {
-    a_range.push_back(*iter * -1);
-  }
-
-  for (auto& b : b_range)
-  {
-    a_range.push_back(b);
-  }
 
   unsigned int consecutive_prime_count{0};
   long coefficient_product{0};
 
   for (auto b = 0; b < b_range.size(); ++b)
   {
-    for (auto a = (a_range.size() - 1) / 2 - b; a < a_range.size(); ++a)
+    for (auto a = b * -1; a < 1000; ++a)
     {
       unsigned int n{0};
 
-      while (sieve[get_next_f(n, a_range[a], b_range[b])])
+      while (sieve[get_next_f(n, a, b_range[b])])
       {
         ++n;
       }
@@ -71,7 +59,7 @@ int main()
       if (n > consecutive_prime_count)
       {
         consecutive_prime_count = n;
-        coefficient_product = a_range[a] * b_range[b];
+        coefficient_product = a * b_range[b];
       }
     }
   }
