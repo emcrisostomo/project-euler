@@ -39,6 +39,7 @@ int main()
   //
   //   - b must be a prime number -> b is prime and > 0.
   //   - 1 + a + b must be a prime number -> a is odd and a > -b
+  auto sieve = prime::sieve_of_erathostenes(1000000);
   auto b_range = prime::get_primes_smaller_than(1000);
   std::vector<long> a_range;
   a_range.reserve(b_range.size() * 2);
@@ -62,7 +63,7 @@ int main()
     {
       unsigned int n{0};
 
-      while (prime::is_prime(static_cast<unsigned long>(get_next_f(n, a_range[a], b_range[b]))))
+      while (sieve[get_next_f(n, a_range[a], b_range[b])])
       {
         ++n;
       }
