@@ -62,10 +62,7 @@ int main()
     {
       unsigned int n{0};
 
-      const auto& ac = a_range[a];
-      const auto& bc = b_range[b];
-
-      while (prime::is_prime(static_cast<unsigned long>(get_next_f(n, ac, bc))))
+      while (prime::is_prime(static_cast<unsigned long>(get_next_f(n, a_range[a], b_range[b]))))
       {
         ++n;
       }
