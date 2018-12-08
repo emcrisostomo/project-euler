@@ -19,7 +19,7 @@
 //
 int main()
 {
-  std::set<std::string> values;
+  std::set<mpz_class> values;
 
   for (auto a = 2; a <= 100; ++a)
   {
@@ -27,7 +27,7 @@ int main()
     {
       mpz_class n_a{a};
       mpz_pow_ui(n_a.get_mpz_t(), n_a.get_mpz_t(), b);
-      values.insert(n_a.get_str(10));
+      values.insert(n_a);
     }
   }
 
