@@ -22,6 +22,21 @@ std::vector<unsigned int> calculate_fifth_powers();
 //
 int main()
 {
+  // Given the biggest number n = d * 9^5 we can produce with d digits, it
+  // follows that:
+  //
+  //   10^{d - 1}          <= d 9^5                       < 10^d
+  //   (d - 1) log(10)     <= log(d) + 5 log(9)           < d log(10)
+  //   d - 1               <= log_{10}(d) + 5 log_{10}(9) < d
+  //   d - 1 - log_{10}(d) <= 5 log_{10}(9)               < d - log_{10}(9)
+  //   d - log_{10}(d)     <= 5 log_{10}(9) + 1           < d + 1 - log_{10}(d)
+  //   d - log_{10}(d)     <= 5.7712...                   < d + 1 - log_{10}(d)
+  //   d - log_{10}(5)     <= 5.7712...                   < d + 1 - log_{10}(5)
+  //   d                   <= 6.47                        < d + 1
+  //
+  // hence d = 6.  The upper bound of the search is then:
+  //
+  //   6 9^5 = 354294
   const unsigned int limit = 354294;
 
   std::vector<unsigned int> powers = calculate_fifth_powers();
