@@ -28,7 +28,6 @@ std::vector<bool> prime::sieve_of_erathostenes(size_t size)
   return sieve_of_erathostenes(size, nullptr, nullptr);
 }
 
-
 std::vector<bool> prime::sieve_of_erathostenes(size_t size,
                                                prime::prime_found_callback prime_found_callback,
                                                void *context)
@@ -60,10 +59,11 @@ std::map<unsigned long, unsigned int> prime::factorize(unsigned long number)
   // Return empty factorizations for non-composite numbers.
   if (number == 0) return v;
   if (number == 1) return v;
+  if (number == 2) return {{2, 1}};
 
   auto n = number;
 
-  for (auto i = 2; i <= n / 2; ++i)
+  for (auto i = 2; i <= std::sqrt(n); ++i)
   {
     if (n % i == 0)
     {
@@ -95,7 +95,7 @@ bool prime::is_prime(unsigned long number)
 
   auto n = number;
 
-  for (auto i = 2; i <= n / 2; ++i)
+  for (auto i = 2; i <= std::sqrt(n); ++i)
   {
     if (n % i == 0)
     {
