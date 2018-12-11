@@ -49,6 +49,7 @@ target_link_libraries(euler-029+brute-force PRIVATE gmp)
 add_executable(euler-029 euler-029.cpp prime.cpp prime.h)
 add_executable(euler-030 euler-030.cpp)
 add_executable(euler-031 euler-031.cpp)
+add_executable(euler-032 euler-032.cpp)
 add_executable(euler-067 euler-067.cpp triangle.cpp triangle.h)
 
 # tests
