@@ -14,6 +14,20 @@
 //
 int main()
 {
-  std::cout << "\n";
+  const unsigned int target = 10;
+  std::vector<unsigned int> coinSizes = {1, 2, 5, 10, 20, 50, 100, 200};
+  std::vector<unsigned long> ways(target+1);
+  ways[0] = 1;
+
+  for (unsigned int coinSize : coinSizes)
+  {
+    for (int j = coinSize; j <= target; j++)
+    {
+      ways[j] += ways[j - coinSize];
+    }
+  }
+
+  std::cout << ways[target] << "\n";
+
   return 0;
 }
