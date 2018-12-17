@@ -148,5 +148,8 @@ set_tests_properties(euler-030-runs PROPERTIES PASS_REGULAR_EXPRESSION "^443839\
 add_test(euler-031-runs euler-031)
 set_tests_properties(euler-031-runs PROPERTIES PASS_REGULAR_EXPRESSION "^73682\n$")
 
+add_test(euler-032-runs euler-032)
+set_tests_properties(euler-032-runs PROPERTIES PASS_REGULAR_EXPRESSION "^45228\n$")
+
 add_test(euler-067-runs euler-067 ${PROJECT_SOURCE_DIR}/p067_triangle.txt)
 set_tests_properties(euler-067-runs PROPERTIES PASS_REGULAR_EXPRESSION "^7273\n$")
