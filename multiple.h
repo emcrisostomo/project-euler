@@ -9,6 +9,7 @@
 namespace multiple
 {
   unsigned int of_all(unsigned int from, unsigned int to);
+  unsigned int gcd(unsigned int a, unsigned int b);
 };
 
 

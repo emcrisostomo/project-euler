@@ -26,3 +26,12 @@ unsigned int multiple::of_all(unsigned int from, unsigned int to)
 
   return lcm;
 }
+
+unsigned int multiple::gcd(unsigned int a, unsigned int b)
+{
+  if (b > a) return gcd(b, a);
+  if (a == b) return a;
+
+  return gcd(a - b, b);
+
+}
