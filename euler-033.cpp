@@ -23,7 +23,9 @@ int main()
   for (int i = 10; i <= 99; ++i)
   {
     auto u = (i % 10);
-    if (u == 0) continue;
+    auto dd = (i / 10);
+
+    if (u <= dd) continue;
 
     auto d = u * 10;
     for (int j = d + 1; j <= d + 9; ++j)
