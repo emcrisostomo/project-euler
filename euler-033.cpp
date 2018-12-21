@@ -28,13 +28,9 @@ int main()
     auto d = u * 10;
     for (int j = d + 1; j <= d + 9; ++j)
     {
-      double q = (double) i / j;
+      if (i >= j) continue;
 
-      if (q >= 1) continue;
-
-      double v = (double) (i / 10) / (j % 10);
-
-      if (q == v)
+      if ((i * (j % 10)) == (j * (i / 10)))
       {
         numerator *= i;
         denominator *= j;
