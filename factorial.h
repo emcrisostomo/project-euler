@@ -5,12 +5,16 @@
 #ifndef PROJECT_EULER_FACTORIAL_H
 #define PROJECT_EULER_FACTORIAL_H
 
-template <typename T>
-T factorial(const T& n)
+namespace factorial
 {
-  if (n <= 1) return 1;
 
-  return n * factorial<T>(n - 1);
+  template<typename T>
+  T of(const T& n)
+  {
+    if (n <= 1) return 1;
+
+    return n * factorial::of<T>(n - 1);
+  }
 }
 
 #endif //PROJECT_EULER_FACTORIAL_H
