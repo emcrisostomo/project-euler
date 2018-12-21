@@ -1,8 +1,7 @@
 #include <iostream>
 #include <gmpxx.h>
 #include <string>
-
-mpz_class factorial(const mpz_class& n);
+#include "factorial.h"
 
 // n! means n × (n − 1) × ... × 3 × 2 × 1
 //
@@ -25,11 +24,4 @@ int main()
 
   std::cout << sum << "\n";
   return 0;
-}
-
-mpz_class factorial(const mpz_class& n)
-{
-  if (n <= 1) return 1;
-
-  return n * factorial(n - 1);
 }
