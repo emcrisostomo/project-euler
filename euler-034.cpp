@@ -16,6 +16,20 @@ int main()
 {
   std::vector<unsigned int> digit_factorial(10, 0);
   calculate_factorials(digit_factorial, 9);
+
+  // Finding a bound: given a number n with d digits, we have:
+  //
+  //   10^{d-1} <= n < 10^d
+  //
+  // The biggest n for any d is formed with all 9s:
+  //
+  //   10^{d-1}        <= d 9! < 10^d
+  //   (d-1) log(10)   <= log(d) + log(9!)           < d log(10)
+  //   (d-1)           <= log_{10}(d) + log_{10}(9!) < d
+  //   (d-1)           <= log_{10}(d) + 5.56         < d
+  //   d               <= log_{10}(d) + 6.56         < d + 1
+  //   d - log_{10}(d) <= 6.56                       < d - log_{10}(d) + 1
+  //   d = 7
   const unsigned int limit = digit_factorial[9] * 7;
 
   unsigned long sum{0};
