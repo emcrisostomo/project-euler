@@ -7,13 +7,18 @@
 
 namespace factorial
 {
+  template<typename T, typename R>
+  R of(const T& n)
+  {
+    if (n <= 1) return 1;
+
+    return n * factorial::of<T, R>(n - 1);
+  }
 
   template<typename T>
   T of(const T& n)
   {
-    if (n <= 1) return 1;
-
-    return n * factorial::of<T>(n - 1);
+    return factorial::of<T, T>(n);
   }
 }
 
