@@ -19,7 +19,7 @@ int main()
   const unsigned int limit = digit_factorial[9] * 7;
 
   unsigned long sum{0};
-  for (auto i = 3; i < limit; ++i)
+  for (auto i = 10; i < limit; ++i)
   {
     if (i == sum_of_factorial_digits(i, digit_factorial)) sum += i;
   }
