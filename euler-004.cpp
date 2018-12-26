@@ -26,6 +26,6 @@ int main(int argc, char *argv[])
     }
   }
 
-  std::cout << max << " = " << a << " * " << b << "\n";
+  std::cout << max << "\n";
   return 0;
 }
