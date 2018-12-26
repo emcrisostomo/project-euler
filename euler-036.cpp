@@ -1,8 +1,6 @@
 #include <iostream>
 #include "palindrome.h"
 
-bool rotations_are_prime(int prime, std::vector<bool> sieve);
-
 //
 // The decimal number, 585 = 10010010012 (binary), is palindromic in both bases.
 //
