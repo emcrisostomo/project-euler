@@ -2,8 +2,7 @@
 #include "prime.h"
 #include "number.h"
 
-bool are_left_truncations_prime(int n, std::vector<bool>& sieve);
-bool are_right_truncations_prime(int n, std::vector<bool>& sieve);
+bool is_truncatable(int n, std::vector<bool>& sieve);
 
 // The number 3797 has an interesting property. Being prime itself, it is
 // possible to continuously remove digits from left to right, and remain prime
@@ -26,12 +25,11 @@ int main()
 
   for (auto i = 23; i < limit && count < to_find; i += 2)
   {
-    if (are_left_truncations_prime(i, sieve)
-        && are_right_truncations_prime(i, sieve))
-    {
-      sum += i;
-      ++count;
-    }
+    if (!sieve[i]) continue;
+    if (!is_truncatable(i, sieve)) continue;
+
+    sum += i;
+    ++count;
   }
 
   if (count != to_find)
@@ -42,39 +40,13 @@ int main()
   return 0;
 }
 
-bool are_left_truncations_prime(int n, std::vector<bool>& sieve)
+bool is_truncatable(int n, std::vector<bool>& sieve)
 {
-  bool ret = true;
+  for (auto i = 10; i <= n; i *= 10)
+  {
+    if (!sieve[n % i]) return false;
+    if (!sieve[n / i]) return false;
+  }
 
-  try
-  {
-    while (true)
-    {
-      if (!sieve[n]) return false;
-      n = number::truncate_msd(n);
-    }
-  }
-  catch (const std::runtime_error& e)
-  {
-    return ret;
-  }
+  return true;
 }
-
-bool are_right_truncations_prime(int n, std::vector<bool>& sieve)
-{
-  bool ret = true;
-
-  try
-  {
-    while (true)
-    {
-      if (!sieve[n]) return false;
-      n = number::truncate_lsd(n);
-    }
-  }
-  catch (const std::runtime_error& e)
-  {
-    return ret;
-  }
-}
-
