@@ -59,14 +59,14 @@ add_executable(euler-067 euler-067.cpp triangle.cpp triangle.h)
 # tests
 include(CTest)
 
-add_test(euler-001-runs euler-001)
-set_tests_properties(euler-001-runs PROPERTIES PASS_REGULAR_EXPRESSION "^233168\n$")
+add_test(euler-001 euler-001)
+set_tests_properties(euler-001 PROPERTIES PASS_REGULAR_EXPRESSION "^233168\n$")
 
 add_test(euler-002 euler-002)
 set_tests_properties(euler-002 PROPERTIES PASS_REGULAR_EXPRESSION "^4613732\n$")
 
-add_test(euler-003-runs euler-003)
-set_tests_properties(euler-003-runs PROPERTIES WILL_FAIL true)
+add_test(euler-003 euler-003)
+set_tests_properties(euler-003 PROPERTIES WILL_FAIL true)
 
 add_test(euler-003-0 euler-003 0)
 set_tests_properties(euler-003-0 PROPERTIES PASS_REGULAR_EXPRESSION "^0\n$")
@@ -98,92 +98,92 @@ set_tests_properties(euler-005 PROPERTIES PASS_REGULAR_EXPRESSION "^232792560\n$
 add_test(euler-006 euler-006)
 set_tests_properties(euler-006 PROPERTIES PASS_REGULAR_EXPRESSION "^25164150\n$")
 
-add_test(euler-007-runs euler-007)
-set_tests_properties(euler-007-runs PROPERTIES PASS_REGULAR_EXPRESSION "^104743\n$")
+add_test(euler-007 euler-007)
+set_tests_properties(euler-007 PROPERTIES PASS_REGULAR_EXPRESSION "^104743\n$")
 
-add_test(euler-008-runs euler-008)
-set_tests_properties(euler-008-runs PROPERTIES PASS_REGULAR_EXPRESSION "^23514624000\n$")
+add_test(euler-008 euler-008)
+set_tests_properties(euler-008 PROPERTIES PASS_REGULAR_EXPRESSION "^23514624000\n$")
 
-add_test(euler-009-runs euler-009)
-set_tests_properties(euler-009-runs PROPERTIES PASS_REGULAR_EXPRESSION "^31875000\n$")
+add_test(euler-009 euler-009)
+set_tests_properties(euler-009 PROPERTIES PASS_REGULAR_EXPRESSION "^31875000\n$")
 
-add_test(euler-010-runs euler-010)
-set_tests_properties(euler-010-runs PROPERTIES PASS_REGULAR_EXPRESSION "^142913828922\n$")
+add_test(euler-010 euler-010)
+set_tests_properties(euler-010 PROPERTIES PASS_REGULAR_EXPRESSION "^142913828922\n$")
 
-add_test(euler-011-runs euler-011)
-set_tests_properties(euler-011-runs PROPERTIES PASS_REGULAR_EXPRESSION "^70600674\n$")
+add_test(euler-011 euler-011)
+set_tests_properties(euler-011 PROPERTIES PASS_REGULAR_EXPRESSION "^70600674\n$")
 
-add_test(euler-012-runs euler-012)
-set_tests_properties(euler-012-runs PROPERTIES PASS_REGULAR_EXPRESSION "^76576500\n$")
+add_test(euler-012 euler-012)
+set_tests_properties(euler-012 PROPERTIES PASS_REGULAR_EXPRESSION "^76576500\n$")
 
-add_test(euler-013-runs euler-013)
-set_tests_properties(euler-013-runs PROPERTIES PASS_REGULAR_EXPRESSION "^5537376230\n$")
+add_test(euler-013 euler-013)
+set_tests_properties(euler-013 PROPERTIES PASS_REGULAR_EXPRESSION "^5537376230\n$")
 
-add_test(euler-014-runs euler-014)
-set_tests_properties(euler-014-runs PROPERTIES PASS_REGULAR_EXPRESSION "^837799\n$")
+add_test(euler-014 euler-014)
+set_tests_properties(euler-014 PROPERTIES PASS_REGULAR_EXPRESSION "^837799\n$")
 
-add_test(euler-016-runs euler-016)
-set_tests_properties(euler-016-runs PROPERTIES PASS_REGULAR_EXPRESSION "^1366\n$")
+add_test(euler-016 euler-016)
+set_tests_properties(euler-016 PROPERTIES PASS_REGULAR_EXPRESSION "^1366\n$")
 
-add_test(euler-018-runs euler-018)
-set_tests_properties(euler-018-runs PROPERTIES PASS_REGULAR_EXPRESSION "^1074\n$")
+add_test(euler-018 euler-018)
+set_tests_properties(euler-018 PROPERTIES PASS_REGULAR_EXPRESSION "^1074\n$")
 
-add_test(euler-019-runs euler-019)
-set_tests_properties(euler-019-runs PROPERTIES PASS_REGULAR_EXPRESSION "^171\n$")
+add_test(euler-019 euler-019)
+set_tests_properties(euler-019 PROPERTIES PASS_REGULAR_EXPRESSION "^171\n$")
 
-add_test(euler-020-runs euler-020)
-set_tests_properties(euler-020-runs PROPERTIES PASS_REGULAR_EXPRESSION "^648\n$")
+add_test(euler-020 euler-020)
+set_tests_properties(euler-020 PROPERTIES PASS_REGULAR_EXPRESSION "^648\n$")
 
-add_test(euler-021-runs euler-021)
-set_tests_properties(euler-021-runs PROPERTIES PASS_REGULAR_EXPRESSION "^31626\n$")
+add_test(euler-021 euler-021)
+set_tests_properties(euler-021 PROPERTIES PASS_REGULAR_EXPRESSION "^31626\n$")
 
-add_test(euler-022-runs euler-022 ${PROJECT_SOURCE_DIR}/p022_names.txt)
-set_tests_properties(euler-022-runs PROPERTIES PASS_REGULAR_EXPRESSION "^871198282\n$")
+add_test(euler-022 euler-022 ${PROJECT_SOURCE_DIR}/p022_names.txt)
+set_tests_properties(euler-022 PROPERTIES PASS_REGULAR_EXPRESSION "^871198282\n$")
 
-add_test(euler-023-runs euler-023)
-set_tests_properties(euler-023-runs PROPERTIES PASS_REGULAR_EXPRESSION "^4179871\n$")
+add_test(euler-023 euler-023)
+set_tests_properties(euler-023 PROPERTIES PASS_REGULAR_EXPRESSION "^4179871\n$")
 
-add_test(euler-024-runs euler-024)
-set_tests_properties(euler-024-runs PROPERTIES PASS_REGULAR_EXPRESSION "^2783915460\n$")
+add_test(euler-024 euler-024)
+set_tests_properties(euler-024 PROPERTIES PASS_REGULAR_EXPRESSION "^2783915460\n$")
 
-add_test(euler-025-runs euler-025)
-set_tests_properties(euler-025-runs PROPERTIES PASS_REGULAR_EXPRESSION "^4782\n$")
+add_test(euler-025 euler-025)
+set_tests_properties(euler-025 PROPERTIES PASS_REGULAR_EXPRESSION "^4782\n$")
 
-add_test(euler-026-runs euler-026)
-set_tests_properties(euler-026-runs PROPERTIES PASS_REGULAR_EXPRESSION "^983\n$")
+add_test(euler-026 euler-026)
+set_tests_properties(euler-026 PROPERTIES PASS_REGULAR_EXPRESSION "^983\n$")
 
-add_test(euler-027-runs euler-027)
-set_tests_properties(euler-027-runs PROPERTIES PASS_REGULAR_EXPRESSION "^-59231\n$")
+add_test(euler-027 euler-027)
+set_tests_properties(euler-027 PROPERTIES PASS_REGULAR_EXPRESSION "^-59231\n$")
 
-add_test(euler-028-runs euler-028)
-set_tests_properties(euler-028-runs PROPERTIES PASS_REGULAR_EXPRESSION "^669171001\n$")
+add_test(euler-028 euler-028)
+set_tests_properties(euler-028 PROPERTIES PASS_REGULAR_EXPRESSION "^669171001\n$")
 
-add_test(euler-029+brute-force-runs euler-029+brute-force)
-set_tests_properties(euler-029+brute-force-runs PROPERTIES PASS_REGULAR_EXPRESSION "^9183\n$")
+add_test(euler-029+brute-force euler-029+brute-force)
+set_tests_properties(euler-029+brute-force PROPERTIES PASS_REGULAR_EXPRESSION "^9183\n$")
 
-add_test(euler-029-runs euler-029)
-set_tests_properties(euler-029-runs PROPERTIES PASS_REGULAR_EXPRESSION "^9183\n$")
+add_test(euler-029 euler-029)
+set_tests_properties(euler-029 PROPERTIES PASS_REGULAR_EXPRESSION "^9183\n$")
 
-add_test(euler-030-runs euler-030)
-set_tests_properties(euler-030-runs PROPERTIES PASS_REGULAR_EXPRESSION "^443839\n$")
+add_test(euler-030 euler-030)
+set_tests_properties(euler-030 PROPERTIES PASS_REGULAR_EXPRESSION "^443839\n$")
 
-add_test(euler-031-runs euler-031)
-set_tests_properties(euler-031-runs PROPERTIES PASS_REGULAR_EXPRESSION "^73682\n$")
+add_test(euler-031 euler-031)
+set_tests_properties(euler-031 PROPERTIES PASS_REGULAR_EXPRESSION "^73682\n$")
 
-add_test(euler-032-runs euler-032)
-set_tests_properties(euler-032-runs PROPERTIES PASS_REGULAR_EXPRESSION "^45228\n$")
+add_test(euler-032 euler-032)
+set_tests_properties(euler-032 PROPERTIES PASS_REGULAR_EXPRESSION "^45228\n$")
 
-add_test(euler-033-runs euler-033)
-set_tests_properties(euler-033-runs PROPERTIES PASS_REGULAR_EXPRESSION "^100\n$")
+add_test(euler-033 euler-033)
+set_tests_properties(euler-033 PROPERTIES PASS_REGULAR_EXPRESSION "^100\n$")
 
-add_test(euler-034-runs euler-034)
-set_tests_properties(euler-034-runs PROPERTIES PASS_REGULAR_EXPRESSION "^40730\n$")
+add_test(euler-034 euler-034)
+set_tests_properties(euler-034 PROPERTIES PASS_REGULAR_EXPRESSION "^40730\n$")
 
-add_test(euler-035-runs euler-035)
-set_tests_properties(euler-035-runs PROPERTIES PASS_REGULAR_EXPRESSION "^55\n$")
+add_test(euler-035 euler-035)
+set_tests_properties(euler-035 PROPERTIES PASS_REGULAR_EXPRESSION "^55\n$")
 
-add_test(euler-036-runs euler-036)
-set_tests_properties(euler-036-runs PROPERTIES PASS_REGULAR_EXPRESSION "^872187\n$")
+add_test(euler-036 euler-036)
+set_tests_properties(euler-036 PROPERTIES PASS_REGULAR_EXPRESSION "^872187\n$")
 
-add_test(euler-067-runs euler-067 ${PROJECT_SOURCE_DIR}/p067_triangle.txt)
-set_tests_properties(euler-067-runs PROPERTIES PASS_REGULAR_EXPRESSION "^7273\n$")
+add_test(euler-067 euler-067 ${PROJECT_SOURCE_DIR}/p067_triangle.txt)
+set_tests_properties(euler-067 PROPERTIES PASS_REGULAR_EXPRESSION "^7273\n$")
