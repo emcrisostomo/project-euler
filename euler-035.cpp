@@ -36,7 +36,7 @@ bool rotations_are_prime(int prime, std::vector<bool> sieve)
 
   for (auto i = 1; i < digits; ++i)
   {
-    auto d = static_cast<unsigned int>((prime % 10) * pow(10, digits - 1));
+    auto d = (prime % 10) * (unsigned int)pow(10, digits - 1);
     prime /= 10;
     prime += d;
 
