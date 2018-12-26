@@ -22,14 +22,14 @@ namespace number
   {
     if (n < base) throw std::runtime_error("");
 
-    T num{n};
-    T m{1};
+    T m{base};
 
-    while (num >= base)
+    while (m <= n)
     {
-      num /= base;
       m *= base;
     }
+
+    m /= base;
 
     return n % m;
   }
