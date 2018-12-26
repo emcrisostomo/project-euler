@@ -5,11 +5,6 @@
 #include <string>
 #include "palindrome.h"
 
-bool palindrome::is(unsigned long n)
-{
- return palindrome::is(n, 10);
-}
-
 bool palindrome::is(unsigned long n, unsigned int base)
 {
   unsigned long reversed{0};

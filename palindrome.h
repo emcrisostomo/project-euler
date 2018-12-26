@@ -8,8 +8,7 @@
 
 namespace palindrome
 {
-  bool is(unsigned long n);
-  bool is(unsigned long n, unsigned int base);
+  bool is(unsigned long n, unsigned int base = 10);
 };
 
 
