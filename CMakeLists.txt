@@ -53,6 +53,7 @@ add_executable(euler-032 euler-032.cpp)
 add_executable(euler-033 euler-033.cpp multiple.cpp multiple.h)
 add_executable(euler-034 euler-034.cpp factorial.h)
 add_executable(euler-035 euler-035.cpp prime.h prime.cpp)
+add_executable(euler-036 euler-036.cpp palindrome.h palindrome.cpp)
 add_executable(euler-067 euler-067.cpp triangle.cpp triangle.h)
 
 # tests
