@@ -55,6 +55,7 @@ add_executable(euler-034 euler-034.cpp factorial.h)
 add_executable(euler-035 euler-035.cpp prime.h prime.cpp)
 add_executable(euler-036 euler-036.cpp palindrome.h palindrome.cpp)
 add_executable(euler-037 euler-037.cpp prime.h prime.cpp number.h)
+add_executable(euler-038 euler-038.cpp)
 add_executable(euler-067 euler-067.cpp triangle.cpp triangle.h)
 
 # tests
