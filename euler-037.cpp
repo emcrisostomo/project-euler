@@ -24,7 +24,7 @@ int main()
   unsigned int count{0};
   std::vector<bool> sieve = prime::sieve_of_erathostenes(limit);
 
-  for (auto i = 11; i < limit && count < to_find; ++i)
+  for (auto i = 23; i < limit && count < to_find; i += 2)
   {
     if (are_left_truncations_prime(i, sieve)
         && are_right_truncations_prime(i, sieve))
