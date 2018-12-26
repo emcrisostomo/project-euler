@@ -54,6 +54,7 @@ add_executable(euler-033 euler-033.cpp multiple.cpp multiple.h)
 add_executable(euler-034 euler-034.cpp factorial.h)
 add_executable(euler-035 euler-035.cpp prime.h prime.cpp)
 add_executable(euler-036 euler-036.cpp palindrome.h palindrome.cpp)
+add_executable(euler-037 euler-037.cpp prime.h prime.cpp number.h)
 add_executable(euler-067 euler-067.cpp triangle.cpp triangle.h)
 
 # tests
@@ -184,6 +185,9 @@ set_tests_properties(euler-035 PROPERTIES PASS_REGULAR_EXPRESSION "^55\n$")
 
 add_test(euler-036 euler-036)
 set_tests_properties(euler-036 PROPERTIES PASS_REGULAR_EXPRESSION "^872187\n$")
+
+add_test(euler-037 euler-037)
+set_tests_properties(euler-037 PROPERTIES PASS_REGULAR_EXPRESSION "^748317\n$")
 
 add_test(euler-067 euler-067 ${PROJECT_SOURCE_DIR}/p067_triangle.txt)
 set_tests_properties(euler-067 PROPERTIES PASS_REGULAR_EXPRESSION "^7273\n$")
