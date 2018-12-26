@@ -7,13 +7,21 @@
 
 bool palindrome::is(unsigned long n)
 {
-  const std::string& s = std::to_string(n);
-  unsigned long length = s.length();
+ return palindrome::is(n, 10);
+}
 
-  for (auto i = 0; i < length / 2; ++i)
+bool palindrome::is(unsigned long n, unsigned int base)
+{
+  unsigned long reversed{0};
+  auto num = n;
+
+  while (num != 0)
   {
-    if (s[i] != s[length - 1 - i]) return false;
+    auto u = num % base;
+    reversed *= base;
+    reversed += u;
+    num /= base;
   }
-  
-  return true;
+
+  return (n == reversed);
 }
