@@ -10,7 +10,15 @@
 //
 int main()
 {
+  const unsigned int limit = 1000000;
+  unsigned long sum{0};
 
+  for (auto i=1; i < limit; ++i)
+  {
+    if (palindrome::is(i, 2) && palindrome::is(i)) sum += i;
+  }
+
+  std::cout << sum << "\n";
 
   return 0;
 }
