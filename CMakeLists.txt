@@ -62,6 +62,9 @@ include(CTest)
 add_test(euler-001-runs euler-001)
 set_tests_properties(euler-001-runs PROPERTIES PASS_REGULAR_EXPRESSION "^233168\n$")
 
+add_test(euler-002 euler-002)
+set_tests_properties(euler-002 PROPERTIES PASS_REGULAR_EXPRESSION "^4613732\n$")
+
 add_test(euler-003-runs euler-003)
 set_tests_properties(euler-003-runs PROPERTIES WILL_FAIL true)
 
@@ -89,8 +92,20 @@ set_tests_properties(euler-003-600851475143 PROPERTIES PASS_REGULAR_EXPRESSION "
 add_test(euler-004 euler-004)
 set_tests_properties(euler-004 PROPERTIES PASS_REGULAR_EXPRESSION "^906609\n$")
 
+add_test(euler-005 euler-005)
+set_tests_properties(euler-005 PROPERTIES PASS_REGULAR_EXPRESSION "^232792560\n$")
+
+add_test(euler-006 euler-006)
+set_tests_properties(euler-006 PROPERTIES PASS_REGULAR_EXPRESSION "^25164150\n$")
+
 add_test(euler-007-runs euler-007)
 set_tests_properties(euler-007-runs PROPERTIES PASS_REGULAR_EXPRESSION "^104743\n$")
+
+add_test(euler-008-runs euler-008)
+set_tests_properties(euler-008-runs PROPERTIES PASS_REGULAR_EXPRESSION "^23514624000\n$")
+
+add_test(euler-009-runs euler-009)
+set_tests_properties(euler-009-runs PROPERTIES PASS_REGULAR_EXPRESSION "^31875000\n$")
 
 add_test(euler-010-runs euler-010)
 set_tests_properties(euler-010-runs PROPERTIES PASS_REGULAR_EXPRESSION "^142913828922\n$")
@@ -166,6 +181,9 @@ set_tests_properties(euler-034-runs PROPERTIES PASS_REGULAR_EXPRESSION "^40730\n
 
 add_test(euler-035-runs euler-035)
 set_tests_properties(euler-035-runs PROPERTIES PASS_REGULAR_EXPRESSION "^55\n$")
+
+add_test(euler-036-runs euler-036)
+set_tests_properties(euler-036-runs PROPERTIES PASS_REGULAR_EXPRESSION "^872187\n$")
 
 add_test(euler-067-runs euler-067 ${PROJECT_SOURCE_DIR}/p067_triangle.txt)
 set_tests_properties(euler-067-runs PROPERTIES PASS_REGULAR_EXPRESSION "^7273\n$")
