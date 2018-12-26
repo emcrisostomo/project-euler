@@ -17,18 +17,25 @@ bool are_right_truncations_prime(int n, std::vector<bool>& sieve);
 //
 int main()
 {
+  // The limit is arbitrary
   const unsigned int limit{1000000};
+  const unsigned int to_find{11};
   unsigned long sum{0};
+  unsigned int count{0};
   std::vector<bool> sieve = prime::sieve_of_erathostenes(limit);
 
-  for (auto i = 11; i < limit; ++i)
+  for (auto i = 11; i < limit && count < to_find; ++i)
   {
     if (are_left_truncations_prime(i, sieve)
         && are_right_truncations_prime(i, sieve))
     {
       sum += i;
+      ++count;
     }
   }
+
+  if (count != to_find)
+    return 1;
 
   std::cout << sum << "\n";
 
