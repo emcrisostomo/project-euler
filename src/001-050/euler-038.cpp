@@ -51,7 +51,10 @@ int main()
   //   [9000,9999], [18000,19998]
   //
   // and 9 digits concatenations will be possible when n <= 2.
-  for (unsigned long i = 9876; i >= 9123; --i)
+  //
+  // Since we know that the second product will have a 1 in it, we reduce the
+  // search space by stopping at 9234 instead of 9123.
+  for (unsigned long i = 9876; i >= 9234; --i)
   {
     // Since we now i * 2 will have 5 digits, we're shifting i * 1 to make room
     unsigned long number = 100000 * i;
