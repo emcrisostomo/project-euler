@@ -24,21 +24,45 @@ int main()
 {
   unsigned long max{0};
 
+  // Numbers are concatenated from left to right, so the first product will
+  // provide the most significant digits of the resulting pandigital number.
+  // Since we're given a number starting with 9 in the problem statement, and
+  // since the first product i * n is given by n = 1, the search space can be
+  // reduced to the following sets:
+  //
+  //   [90,99]
+  //   [900,999]
+  //   [9000,9999]
+  //
+  // If i \in [90,99], then the first products will be in the ranges:
+  //
+  //   [90,99], [180,198], [270,297], [360,396],
+  //
+  // hence 9 digits concatenations are not possible.
+  //
+  // If i \in [900,999], then the first products will be in the ranges:
+  //
+  //   [900,999], [1800,1998], [2700,2997]
+  //
+  // hence 9 digits concatenations are not possible.
+  //
+  // If i \in [9000,9999], the the first products will be in the ranges:
+  //
+  //   [9000,9999], [18000,19998]
+  //
+  // and 9 digits concatenations will be possible when n <= 2.
   for (auto i = 9999; i >= 1; --i)
   {
     unsigned long number{0};
-    unsigned int digits{0};
 
-    for (auto j = 1; digits < 9; ++j)
+    for (auto n = 1; n <= 2; ++n)
     {
-      auto product = i * j;
+      auto product = i * n;
       auto d = number::digits_in_number(product);
-      digits += d;
       number *= static_cast<unsigned long>(pow(10, d));
       number += product;
     }
 
-    if (digits != 9) continue;
     if (!number::is_pandigital(number)) continue;
 
     max = number;
