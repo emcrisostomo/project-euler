@@ -1,4 +1,44 @@
 #include <iostream>
+#include <vector>
+#include <cmath>
+#include <algorithm>
+
+template<class T>
+unsigned int digits_in_number(T number)
+{
+  unsigned int digits = 0;
+  if (number < 0) digits = 1; // remove this line if '-' counts as a digit
+
+  while (number)
+  {
+    number /= 10;
+    digits++;
+  }
+
+  return digits;
+}
+
+void find_digits(unsigned long number, std::vector<bool>& digits)
+{
+  while (number)
+  {
+    digits[number % 10] = true;
+    number /= 10;
+  }
+}
+
+bool is_pandigital(unsigned long product)
+{
+  std::vector<bool> digits(10, false);
+  digits[0] = true;
+
+  find_digits(product, digits);
+
+  for (const auto d : digits) if (!d) return false;
+
+  return true;
+}
+
 
 // Take the number 192 and multiply it by each of 1, 2, and 3:
 //
@@ -19,6 +59,26 @@
 int main()
 {
   unsigned long max{0};
+
+  for (auto i = 1; i < 9999; ++i)
+  {
+    unsigned long number{0};
+    unsigned int digits{0};
+
+    for (auto j = 1; digits < 9; ++j)
+    {
+      auto product = i * j;
+      auto d = digits_in_number(product);
+      digits += d;
+      number *= static_cast<unsigned long>(pow(10, d));
+      number += product;
+    }
+
+    if (digits != 9) continue;
+    if (!is_pandigital(number)) continue;
+
+    max = std::max(max, number);
+  }
 
   std::cout << max << "\n";
 
