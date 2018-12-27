@@ -2,6 +2,7 @@
 #include <vector>
 #include <cmath>
 #include <algorithm>
+#include "number.h"
 
 template<class T>
 unsigned int digits_in_number(T number, T base = 10)
@@ -18,21 +19,12 @@ unsigned int digits_in_number(T number, T base = 10)
   return digits;
 }
 
-void find_digits(unsigned long number, std::vector<bool>& digits, unsigned long base = 10)
-{
-  while (number)
-  {
-    digits[number % base] = true;
-    number /= base;
-  }
-}
-
 bool is_pandigital(unsigned long product, unsigned long base = 10)
 {
   std::vector<bool> digits(base, false);
   digits[0] = true;
 
-  find_digits(product, digits);
+  number::find_digits(product, digits);
 
   for (const auto d : digits) if (!d) return false;
 

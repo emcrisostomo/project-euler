@@ -33,14 +33,14 @@ namespace number
 
     return n % m;
   }
-
+  
   template<typename T>
-  void find_digits(T number, std::vector<bool>& digits)
+  void find_digits(T number, std::vector<bool>& digits, T base = 10)
   {
     while (number)
     {
-      digits[number % 10] = true;
-      number /= 10;
+      digits[number % base] = true;
+      number /= base;
     }
   }
 
