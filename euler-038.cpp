@@ -24,7 +24,7 @@ int main()
 {
   unsigned long max{0};
 
-  for (auto i = 1; i < 9999; ++i)
+  for (auto i = 9999; i >= 1; --i)
   {
     unsigned long number{0};
     unsigned int digits{0};
