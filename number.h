@@ -33,6 +33,31 @@ namespace number
 
     return n % m;
   }
+
+  template<typename T>
+  void find_digits(T number, std::vector<bool>& digits)
+  {
+    while (number)
+    {
+      digits[number % 10] = true;
+      number /= 10;
+    }
+  }
+
+  template<typename T>
+  bool is_pandigital(T i, T j, T product)
+  {
+    std::vector<bool> digits(10, false);
+    digits[0] = true;
+
+    find_digits(i, digits);
+    find_digits(j, digits);
+    find_digits(product, digits);
+
+    for (const auto d : digits) if (!d) return false;
+
+    return true;
+  }
 }
 
 #endif //PROJECT_EULER_NUMBER_H

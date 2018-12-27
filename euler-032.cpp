@@ -2,9 +2,8 @@
 #include <vector>
 #include <set>
 #include <numeric>
+#include "number.h"
 
-bool is_pandigital(unsigned int i, unsigned int j, unsigned long product);
-void find_digits(unsigned long number, std::vector<bool>& digits);
 void process_range(unsigned int min0,
                    unsigned int max0,
                    unsigned int min1,
@@ -67,30 +66,10 @@ void process_range(unsigned int min0,
       if (digits < 9) continue;
       if (digits > 9) break;
 
-      if (is_pandigital(i, j, product)) pandigital_products.insert(product);
+      if (number::is_pandigital((unsigned long) i,
+                                (unsigned long) j,
+                                product))
+        pandigital_products.insert(product);
     }
-  }
-}
-
-bool is_pandigital(unsigned int i, unsigned int j, unsigned long product)
-{
-  std::vector<bool> digits(10, false);
-  digits[0] = true;
-
-  find_digits(i, digits);
-  find_digits(j, digits);
-  find_digits(product, digits);
-
-  for (const auto d : digits) if (!d) return false;
-
-  return true;
-}
-
-void find_digits(unsigned long number, std::vector<bool>& digits)
-{
-  while (number)
-  {
-    digits[number % 10] = true;
-    number /= 10;
   }
 }
