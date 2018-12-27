@@ -51,17 +51,11 @@ int main()
   //   [9000,9999], [18000,19998]
   //
   // and 9 digits concatenations will be possible when n <= 2.
-  for (auto i = 9999; i >= 1; --i)
+  for (unsigned long i = 9999; i >= 1; --i)
   {
-    unsigned long number{0};
-
-    for (auto n = 1; n <= 2; ++n)
-    {
-      auto product = i * n;
-      auto d = number::digits_in_number(product);
-      number *= static_cast<unsigned long>(pow(10, d));
-      number += product;
-    }
+    // Since we now i * 2 will have 5 digits, we're shifting i * 1 to make room
+    unsigned long number = 100000 * i;
+    number += (i * 2);
 
     if (!number::is_pandigital(number)) continue;
 
