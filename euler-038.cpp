@@ -4,32 +4,32 @@
 #include <algorithm>
 
 template<class T>
-unsigned int digits_in_number(T number)
+unsigned int digits_in_number(T number, T base = 10)
 {
   unsigned int digits = 0;
   if (number < 0) digits = 1; // remove this line if '-' counts as a digit
 
   while (number)
   {
-    number /= 10;
+    number /= base;
     digits++;
   }
 
   return digits;
 }
 
-void find_digits(unsigned long number, std::vector<bool>& digits)
+void find_digits(unsigned long number, std::vector<bool>& digits, unsigned long base = 10)
 {
   while (number)
   {
-    digits[number % 10] = true;
-    number /= 10;
+    digits[number % base] = true;
+    number /= base;
   }
 }
 
-bool is_pandigital(unsigned long product)
+bool is_pandigital(unsigned long product, unsigned long base = 10)
 {
-  std::vector<bool> digits(10, false);
+  std::vector<bool> digits(base, false);
   digits[0] = true;
 
   find_digits(product, digits);
