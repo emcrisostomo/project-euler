@@ -33,7 +33,22 @@ namespace number
 
     return n % m;
   }
-  
+
+  template<class T>
+  unsigned int digits_in_number(T number, T base = 10)
+  {
+    unsigned int digits = 0;
+    if (number < 0) digits = 1; // remove this line if '-' counts as a digit
+
+    while (number)
+    {
+      number /= base;
+      digits++;
+    }
+
+    return digits;
+  }
+
   template<typename T>
   void find_digits(T number, std::vector<bool>& digits, T base = 10)
   {

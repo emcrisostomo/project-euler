@@ -10,21 +10,6 @@ void process_range(unsigned int min0,
                    unsigned int max1,
                    std::set<unsigned long>& pandigital_products);
 
-template<class T>
-unsigned int digits_in_number(T number)
-{
-  unsigned int digits = 0;
-  if (number < 0) digits = 1; // remove this line if '-' counts as a digit
-
-  while (number)
-  {
-    number /= 10;
-    digits++;
-  }
-
-  return digits;
-}
-
 // We shall say that an n-digit number is pandigital if it makes use of all the
 // digits 1 to n exactly once; for example, the 5-digit number, 15234, is 1
 // through 5 pandigital.
@@ -61,7 +46,7 @@ void process_range(unsigned int min0,
     for (unsigned int j = min1; j <= max1; ++j)
     {
       unsigned long product = i * j;
-      auto digits = digits_in_number(i) + digits_in_number(j) + digits_in_number(product);
+      auto digits = number::digits_in_number(i) + number::digits_in_number(j) + number::digits_in_number(product);
 
       if (digits < 9) continue;
       if (digits > 9) break;

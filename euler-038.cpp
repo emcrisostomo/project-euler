@@ -4,21 +4,6 @@
 #include <algorithm>
 #include "number.h"
 
-template<class T>
-unsigned int digits_in_number(T number, T base = 10)
-{
-  unsigned int digits = 0;
-  if (number < 0) digits = 1; // remove this line if '-' counts as a digit
-
-  while (number)
-  {
-    number /= base;
-    digits++;
-  }
-
-  return digits;
-}
-
 bool is_pandigital(unsigned long product, unsigned long base = 10)
 {
   std::vector<bool> digits(base, false);
@@ -60,7 +45,7 @@ int main()
     for (auto j = 1; digits < 9; ++j)
     {
       auto product = i * j;
-      auto d = digits_in_number(product);
+      auto d = number::digits_in_number(product);
       digits += d;
       number *= static_cast<unsigned long>(pow(10, d));
       number += product;
