@@ -46,7 +46,9 @@ void process_range(unsigned int min0,
     for (unsigned int j = min1; j <= max1; ++j)
     {
       unsigned long product = i * j;
-      auto digits = number::digits_in_number(i) + number::digits_in_number(j) + number::digits_in_number(product);
+      auto digits = number::digits_in_number(i)
+                    + number::digits_in_number(j)
+                    + number::digits_in_number(product);
 
       if (digits < 9) continue;
       if (digits > 9) break;
