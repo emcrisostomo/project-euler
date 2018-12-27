@@ -41,7 +41,8 @@ int main()
     if (digits != 9) continue;
     if (!number::is_pandigital(number)) continue;
 
-    max = std::max(max, number);
+    max = number;
+    break;
   }
 
   std::cout << max << "\n";
