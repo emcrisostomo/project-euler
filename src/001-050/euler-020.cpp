@@ -1,7 +1,7 @@
 #include <iostream>
 #include <gmpxx.h>
 #include <string>
-#include "factorial.h"
+#include "../factorial.h"
 
 // n! means n × (n − 1) × ... × 3 × 2 × 1
 //

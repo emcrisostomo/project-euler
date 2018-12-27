@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "prime.h"
+#include "../prime.h"
 
 const unsigned int upper_limit = 2'000'000;
 

@@ -1,6 +1,6 @@
 
 #include <iostream>
-#include "palindrome.h"
+#include "../palindrome.h"
 
 int main(int argc, char *argv[])
 {

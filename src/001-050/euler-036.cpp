@@ -1,5 +1,5 @@
 #include <iostream>
-#include "palindrome.h"
+#include "../palindrome.h"
 
 // The decimal number, 585 = 10010010012 (binary), is palindromic in both bases.
 //

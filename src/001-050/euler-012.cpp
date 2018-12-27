@@ -1,5 +1,5 @@
 #include <iostream>
-#include "prime.h"
+#include "../prime.h"
 
 unsigned int find_divisor_count(unsigned long n);
 

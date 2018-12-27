@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
-#include "prime.h"
+#include "../prime.h"
 
 bool rotations_are_prime(int prime, std::vector<bool> sieve);
 

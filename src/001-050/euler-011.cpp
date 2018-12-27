@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "prime.h"
+#include "../prime.h"
 
 // In the 20×20 grid below, four numbers along a diagonal line have been marked in red.
 //
