@@ -4,19 +4,6 @@
 #include <algorithm>
 #include "number.h"
 
-bool is_pandigital(unsigned long product, unsigned long base = 10)
-{
-  std::vector<bool> digits(base, false);
-  digits[0] = true;
-
-  number::find_digits(product, digits);
-
-  for (const auto d : digits) if (!d) return false;
-
-  return true;
-}
-
-
 // Take the number 192 and multiply it by each of 1, 2, and 3:
 //
 //   192 × 1 = 192
@@ -52,7 +39,7 @@ int main()
     }
 
     if (digits != 9) continue;
-    if (!is_pandigital(number)) continue;
+    if (!number::is_pandigital(number)) continue;
 
     max = std::max(max, number);
   }

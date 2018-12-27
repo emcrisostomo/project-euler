@@ -60,6 +60,19 @@ namespace number
   }
 
   template<typename T>
+  bool is_pandigital(T product, T base = 10)
+  {
+    std::vector<bool> digits(base, false);
+    digits[0] = true;
+
+    number::find_digits(product, digits);
+
+    for (const auto d : digits) if (!d) return false;
+
+    return true;
+  }
+
+  template<typename T>
   bool is_pandigital(T i, T j, T product)
   {
     std::vector<bool> digits(10, false);
