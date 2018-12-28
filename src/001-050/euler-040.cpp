@@ -31,7 +31,7 @@ int main()
 
   unsigned int product{1};
 
-  for (auto i = 0; i <= 6; ++i) product *= digits[pow(10, i)];
+  for (auto i = 0; i <= 6; ++i) product *= digits[(size_t)pow(10, i)];
 
   std::cout << product << "\n";
 
