@@ -22,7 +22,7 @@ int main()
   {
     unsigned long solutions{0};
 
-    for (unsigned int x = 1; x <= p / 3; ++x)
+    for (unsigned int x = 1; x < p / 3; ++x)
     {
       for (unsigned int y = x; y < p - x; ++y)
       {
