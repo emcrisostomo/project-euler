@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <cmath>
 #include "../number.h"
 
 void add_digits(unsigned int n, std::vector<unsigned short>& vector);
@@ -28,14 +29,11 @@ int main()
     add_digits(i, digits);
   }
 
-  std::cout << (digits[1]
-                * digits[10]
-                * digits[100]
-                * digits[1000]
-                * digits[10000]
-                * digits[100000]
-                * digits[1000000])
-            << "\n";
+  unsigned int product{1};
+
+  for (auto i = 0; i <= 6; ++i) product *= digits[pow(10, i)];
+
+  std::cout << product << "\n";
 
   return 0;
 }
