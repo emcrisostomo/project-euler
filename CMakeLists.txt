@@ -55,7 +55,8 @@ add_executable(euler-034 src/001-050/euler-034.cpp src/factorial.h)
 add_executable(euler-035 src/001-050/euler-035.cpp src/prime.h src/prime.cpp)
 add_executable(euler-036 src/001-050/euler-036.cpp src/palindrome.h src/palindrome.cpp)
 add_executable(euler-037 src/001-050/euler-037.cpp src/prime.h src/prime.cpp src/number.h)
-add_executable(euler-038 src/001-050/euler-038.cpp)
+add_executable(euler-038 src/001-050/euler-038.cpp src/number.h)
+add_executable(euler-039 src/001-050/euler-039.cpp)
 add_executable(euler-067 src/051-100/euler-067.cpp src/triangle.cpp src/triangle.h)
 
 # tests
