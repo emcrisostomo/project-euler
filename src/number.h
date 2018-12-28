@@ -60,6 +60,20 @@ namespace number
   }
 
   template<typename T>
+  std::vector<unsigned short> get_digits(T number, T base = 10)
+  {
+    std::vector<unsigned short> digits;
+
+    while (number)
+    {
+      digits.push_back(number % base);
+      number /= base;
+    }
+
+    return digits;
+  }
+
+  template<typename T>
   bool is_pandigital(T product, T base = 10)
   {
     std::vector<bool> digits(base, false);
