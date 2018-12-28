@@ -19,7 +19,8 @@ void add_digits(unsigned int n, std::vector<unsigned short>& vector);
 //
 int main()
 {
-  const unsigned int limit{1000000};
+  const short max_power{6};
+  const unsigned int limit{(unsigned int)pow(10, max_power)};
   std::vector<unsigned short> digits;
   digits.reserve(limit + 1);
   digits.push_back(0);
@@ -31,7 +32,7 @@ int main()
 
   unsigned int product{1};
 
-  for (auto i = 0; i <= 6; ++i) product *= digits[(size_t)pow(10, i)];
+  for (auto i = 0; i <= max_power; ++i) product *= digits[(size_t)pow(10, i)];
 
   std::cout << product << "\n";
 
