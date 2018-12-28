@@ -27,7 +27,6 @@ int main()
       for (unsigned int y = x; y < p - x; ++y)
       {
         auto z = (p - x - y);
-        if (z < 0) continue;
 
         auto z2 = (x * x) + (y * y);
 
