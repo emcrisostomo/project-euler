@@ -56,7 +56,7 @@ add_executable(euler-035 src/001-050/euler-035.cpp src/prime.h src/prime.cpp)
 add_executable(euler-036 src/001-050/euler-036.cpp src/palindrome.h src/palindrome.cpp)
 add_executable(euler-037 src/001-050/euler-037.cpp src/prime.h src/prime.cpp src/number.h)
 add_executable(euler-038 src/001-050/euler-038.cpp src/number.h)
-add_executable(euler-039 src/001-050/euler-039.cpp)
+add_executable(euler-039 src/001-050/euler-039+brute-force.cpp)
 add_executable(euler-067 src/051-100/euler-067.cpp src/triangle.cpp src/triangle.h)
 
 # tests
@@ -194,8 +194,8 @@ set_tests_properties(euler-037 PROPERTIES PASS_REGULAR_EXPRESSION "^748317\n$")
 add_test(euler-038 euler-038)
 set_tests_properties(euler-038 PROPERTIES PASS_REGULAR_EXPRESSION "^932718654\n$")
 
-add_test(euler-039 euler-039)
-set_tests_properties(euler-039 PROPERTIES PASS_REGULAR_EXPRESSION "^840\n$")
+add_test(euler-039+brute-force euler-039+brute-force)
+set_tests_properties(euler-039+brute-force PROPERTIES PASS_REGULAR_EXPRESSION "^840\n$")
 
 add_test(euler-067 euler-067 ${PROJECT_SOURCE_DIR}/src/051-100/p067_triangle.txt)
 set_tests_properties(euler-067 PROPERTIES PASS_REGULAR_EXPRESSION "^7273\n$")
