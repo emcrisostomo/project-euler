@@ -36,7 +36,17 @@ std::vector<bool> prime::sieve_of_erathostenes(size_t size,
   primes[0] = false;
   primes[1] = false;
 
-  for (unsigned long i = 2; i < primes.size(); ++i)
+  // Since even numbers account for half of the sieve size, we treat them as a
+  // special case
+  primes[2] = true;
+
+  if (prime_found_callback != nullptr) prime_found_callback(2, context);
+
+  for (auto i = 4; i < primes.size(); i += 2)
+    primes[i] = false;
+
+  // Process the sieve
+  for (unsigned long i = 3; i < primes.size(); i += 2)
   {
     if (!primes[i])
       continue;
