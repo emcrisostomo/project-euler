@@ -2,6 +2,7 @@
 #include <vector>
 #include <set>
 #include <numeric>
+#include <cmath>
 #include "../number.h"
 
 void process_range(unsigned int min0,
@@ -46,16 +47,21 @@ void process_range(unsigned int min0,
     for (unsigned int j = min1; j <= max1; ++j)
     {
       unsigned long product = i * j;
-      auto digits = number::digits_in_number(i)
-                    + number::digits_in_number(j)
-                    + number::digits_in_number(product);
 
-      if (digits < 9) continue;
-      if (digits > 9) break;
+      auto n_i = number::digits_in_number(i);
+      auto n_j = number::digits_in_number(j);
+      auto n_p = number::digits_in_number(product);
 
-      if (number::is_pandigital((unsigned long) i,
-                                (unsigned long) j,
-                                product))
+      if (n_i + n_j + n_p != 9) continue;
+
+      unsigned int digits{0};
+      digits += i;
+      digits *= static_cast<unsigned int>(pow(10, n_j));
+      digits += j;
+      digits *= static_cast<unsigned int>(pow(10, n_p));
+      digits += product;
+
+      if (number::is_pandigital(digits))
         pandigital_products.insert(product);
     }
   }
