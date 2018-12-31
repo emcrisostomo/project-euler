@@ -61,6 +61,7 @@ add_executable(euler-039 src/001-050/euler-039.cpp)
 add_executable(euler-040+brute-force src/001-050/euler-040+brute-force.cpp src/number.h)
 add_executable(euler-040 src/001-050/euler-040.cpp src/number.h)
 add_executable(euler-041 src/001-050/euler-041.cpp src/number.h src/prime.h src/prime.cpp)
+add_executable(euler-042 src/001-050/euler-042.cpp)
 add_executable(euler-067 src/051-100/euler-067.cpp src/triangle.cpp src/triangle.h)
 
 # tests
