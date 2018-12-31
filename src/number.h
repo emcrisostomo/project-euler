@@ -50,13 +50,21 @@ namespace number
   }
 
   template<typename T>
-  void find_digits(T number, std::vector<bool>& digits, T base = 10)
+  void find_digits(T number,
+                   std::vector<bool>& digits,
+                   unsigned int *number_of_digits,
+                   T base = 10)
   {
+    unsigned int digits_num{0};
+
     while (number)
     {
       digits[number % base] = true;
       number /= base;
+      ++digits_num;
     }
+
+    if (number_of_digits != nullptr) *number_of_digits = digits_num;
   }
 
   template<typename T>
@@ -76,27 +84,17 @@ namespace number
   template<typename T>
   bool is_pandigital(T product, T base = 10)
   {
+    unsigned int number_of_digits{0};
     std::vector<bool> digits(base, false);
     digits[0] = true;
 
-    number::find_digits(product, digits);
+    number::find_digits(product, digits, &number_of_digits);
 
-    for (const auto d : digits) if (!d) return false;
+    for (auto i = number_of_digits + 1; i < digits.size(); ++i)
+      if (digits[i]) return false;
 
-    return true;
-  }
-
-  template<typename T>
-  bool is_pandigital(T i, T j, T product)
-  {
-    std::vector<bool> digits(10, false);
-    digits[0] = true;
-
-    find_digits(i, digits);
-    find_digits(j, digits);
-    find_digits(product, digits);
-
-    for (const auto d : digits) if (!d) return false;
+    for (auto i = 1; i <= number_of_digits; ++i)
+      if (!digits[i]) return false;
 
     return true;
   }
