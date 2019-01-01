@@ -6,6 +6,8 @@
 #define PROJECT_EULER_NUMBER_H
 
 #include <stdexcept>
+#include <vector>
+#include <cmath>
 
 namespace number
 {
@@ -97,6 +99,30 @@ namespace number
       if (!digits[i]) return false;
 
     return true;
+  }
+
+  bool is_perfect_square(unsigned long n)
+  {
+    unsigned long r{static_cast<unsigned long>(std::round(std::sqrt(n)))};
+
+    return (n == r * r);
+  }
+
+  bool is_triangular(unsigned int number)
+  {
+    // The n-th triangular number is t_n:
+    //
+    //   t_n = n(n+1)/2
+    //
+    // This is a second degree equation in n.  Solving it yields only one valid
+    // solution for n > 0:
+    //
+    //   n = (-1 +- sqrt(1+8t))/2
+    //
+    // Since n is integer, sqrt(1+8t) must be integer as well.
+    unsigned int n = 8 * number + 1;
+
+    return number::is_perfect_square(n);
   }
 }
 

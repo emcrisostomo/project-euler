@@ -2,9 +2,9 @@
 #include <fstream>
 #include <string>
 #include <cmath>
+#include "../number.h"
 
 bool is_triangular_word(std::string word);
-bool is_triangular(unsigned int number);
 
 // The nth term of the sequence of triangle numbers is given by
 //
@@ -61,21 +61,5 @@ bool is_triangular_word(std::string word)
     value += c - 'A' + 1;
   }
 
-  return is_triangular(value);
-}
-
-bool is_triangular(unsigned int number)
-{
-  //   t_n = n(n+1)/2
-  //
-  // is a second degree equation in n.  Solving it yields only one valid
-  // solution for n > 0:
-  //
-  //   n = (-1 +- sqrt(1+8t))/2
-  //
-  // Since n is integer, sqrt(1+8t) must be integer as well.
-  unsigned int n = 8 * number + 1;
-  auto r = static_cast<unsigned int>(std::sqrt(n));
-
-  return (n == r * r);
+  return number::is_triangular(value);
 }
