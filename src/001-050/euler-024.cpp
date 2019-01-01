@@ -20,7 +20,11 @@ int main()
   do
   {
     ++index;
-    if (index == 1000000) print_permutation(permutation);
+    if (index == 1000000)
+    {
+      print_permutation(permutation);
+      break;
+    }
   } while (std::next_permutation(permutation.begin(), permutation.end()));
 
   return 0;
