@@ -84,13 +84,14 @@ namespace number
   }
 
   template<typename T>
-  bool is_pandigital(T product, T base = 10)
+  bool is_pandigital(T product, bool zero_included = false, T base = 10)
   {
     unsigned int number_of_digits{0};
     std::vector<bool> digits(base, false);
-    digits[0] = true;
 
     number::find_digits(product, digits, &number_of_digits);
+
+    if (zero_included && !digits[0]) return false;
 
     for (auto i = number_of_digits + 1; i < digits.size(); ++i)
       if (digits[i]) return false;
