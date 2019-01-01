@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../palindrome.h"
+#include "../number.h"
 
 // The decimal number, 585 = 10010010012 (binary), is palindromic in both bases.
 //
@@ -16,7 +16,7 @@ int main()
 
   for (auto i = 1; i < limit; ++i)
   {
-    if (palindrome::is(i, 2) && palindrome::is(i)) sum += i;
+    if (number::is_palindrome(i, 2) && number::is_palindrome(i)) sum += i;
   }
 
   std::cout << sum << "\n";

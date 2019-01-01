@@ -125,6 +125,22 @@ namespace number
 
     return number::is_perfect_square(n);
   }
+
+  bool is_palindrome(unsigned long n, unsigned int base = 10)
+  {
+    unsigned long reversed{0};
+    auto num = n;
+
+    while (num != 0)
+    {
+      auto u = num % base;
+      num /= base;
+      reversed *= base;
+      reversed += u;
+    }
+
+    return (n == reversed);
+  }
 }
 
 #endif //PROJECT_EULER_NUMBER_H

@@ -1,6 +1,6 @@
 
 #include <iostream>
-#include "../palindrome.h"
+#include "../number.h"
 
 int main(int argc, char *argv[])
 {
@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     {
       auto m = s * f;
 
-      if (palindrome::is(m))
+      if (number::is_palindrome(m))
       {
         if (max <= m)
         {
