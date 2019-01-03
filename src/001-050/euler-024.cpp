@@ -4,7 +4,7 @@
 
 std::vector<unsigned int> to_lehmer_code(unsigned long n, size_t elements);
 std::vector<unsigned long> build_base(size_t elements);
-std::vector<unsigned int> to_permutation(std::vector<unsigned int>& lehmer_code);
+std::vector<unsigned int> to_permutation(const std::vector<unsigned int>& lehmer_code);
 
 // A permutation is an ordered arrangement of objects.  For example, 3124 is one
 // possible permutation of the digits 1, 2, 3 and 4.  If all of the permutations
@@ -37,7 +37,7 @@ int main()
   return 0;
 }
 
-std::vector<unsigned int> to_permutation(std::vector<unsigned int>& lehmer_code)
+std::vector<unsigned int> to_permutation(const std::vector<unsigned int>& lehmer_code)
 {
   std::vector<unsigned int> perm = lehmer_code;
 
