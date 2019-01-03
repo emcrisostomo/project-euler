@@ -35,6 +35,7 @@ add_executable(euler-021 src/001-050/euler-021.cpp src/divisors.h)
 add_executable(euler-022 src/001-050/euler-022.cpp)
 add_executable(euler-023 src/001-050/euler-023.cpp src/divisors.h)
 add_executable(euler-024+brute-force src/001-050/euler-024+brute-force.cpp)
+add_executable(euler-024 src/001-050/euler-024.cpp)
 add_executable(euler-025 src/001-050/euler-025.cpp)
 target_link_libraries(euler-025 PRIVATE gmpxx)
 target_link_libraries(euler-025 PRIVATE gmp)
@@ -154,6 +155,9 @@ set_tests_properties(euler-023 PROPERTIES PASS_REGULAR_EXPRESSION "^4179871\n$")
 
 add_test(euler-024+brute-force euler-024+brute-force)
 set_tests_properties(euler-024+brute-force PROPERTIES PASS_REGULAR_EXPRESSION "^2783915460\n$")
+
+add_test(euler-024 euler-024)
+set_tests_properties(euler-024 PROPERTIES PASS_REGULAR_EXPRESSION "^2783915460\n$")
 
 add_test(euler-025 euler-025)
 set_tests_properties(euler-025 PROPERTIES PASS_REGULAR_EXPRESSION "^4782\n$")
