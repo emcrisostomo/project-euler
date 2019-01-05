@@ -15,7 +15,6 @@
 //
 int main(int argc, char *argv[])
 {
-  unsigned long smallest{0};
   std::vector<unsigned long> pentagonal_numbers;
   pentagonal_numbers.push_back(1);
 
