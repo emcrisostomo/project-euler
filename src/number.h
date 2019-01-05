@@ -126,6 +126,25 @@ namespace number
     return number::is_perfect_square(n);
   }
 
+  bool is_pentagonal(unsigned long number)
+  {
+    // The n-th pentagonal number is p_n:
+    //
+    //   p_n = n (3n - 1) / 2
+    //       = (3n^2 - n) / 2
+    //   =>
+    //   3n^2 - n - 2p_n = 0
+    //   =>
+    //   n = (1 +- sqrt(1 + 24p_n)) / 6
+    //
+    // Since n \in N, only the positive solution is valid and is equivalent to:
+    //
+    //   (sqrt(1 + 24p_n) \in N) \and (1 + sqrt(1 + 24p_n) \equiv 0 (mod 6)
+    auto s = std::sqrt(1 + 24 * number);
+
+    return std::fmod(s, 6) == 5;
+  }
+
   bool is_palindrome(unsigned long n, unsigned int base = 10)
   {
     unsigned long reversed{0};
