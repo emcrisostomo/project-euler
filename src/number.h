@@ -145,6 +145,27 @@ namespace number
     return std::fmod(s, 6) == 5;
   }
 
+  bool is_hexagonal(unsigned long number)
+  {
+    // The n-th hexagonal number is h_n:
+    //
+    //   h_n = n (2n - 1)
+    //       = 2n^2 - n
+    //   =>
+    //   2n^2 - n - h_n = 0
+    //   =>
+    //   n = (1 +- sqrt(1 + 8h_n) ) / 4
+    //
+    // Since n \in N, then:
+    //
+    //   1 + sqrt(1 + 8h_n) \equiv 0 (mod 4)
+    //   =>
+    //   sqrt(1 + 8h_n) \equiv 3 (mod 4)
+    auto s = std::sqrt(1 + 8 * number);
+
+    return std::fmod(s, 4) == 3;
+  }
+
   bool is_palindrome(unsigned long n, unsigned int base = 10)
   {
     unsigned long reversed{0};
