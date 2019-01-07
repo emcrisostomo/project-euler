@@ -19,9 +19,11 @@
 //
 int main(int argc, char *argv[])
 {
+  std::vector<bool> sieve = prime::sieve_of_erathostenes(1000000);
+
   for (unsigned int i = 35;; i += 2)
   {
-    if (prime::is_prime(i)) continue;
+    if (sieve[i]) continue;
 
     auto root = static_cast<unsigned long>(std::floor(std::sqrt(i / 2)));
 
@@ -30,7 +32,7 @@ int main(int argc, char *argv[])
     {
       auto candidate_prime = i - (2 * s * s);
 
-      if (prime::is_prime(candidate_prime))
+      if (sieve[candidate_prime])
       {
         conjecture_satisfied = true;
         break;
