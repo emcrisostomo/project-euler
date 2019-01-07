@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 {
   std::vector<bool> sieve = prime::sieve_of_erathostenes(1000000);
 
-  for (unsigned int i = 35;; i += 2)
+  for (unsigned int i = 35; i < sieve.size(); i += 2)
   {
     if (sieve[i]) continue;
 
@@ -45,4 +45,6 @@ int main(int argc, char *argv[])
       return 0;
     }
   }
+
+  return 1;
 }
