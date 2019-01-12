@@ -2,8 +2,6 @@
 #include <cmath>
 #include "../prime.h"
 
-bool check_factorizations(std::vector<std::map<unsigned long, unsigned int>> vector);
-
 // The first two consecutive numbers to have two distinct prime factors are:
 //
 //   14 = 2 × 7
@@ -20,23 +18,23 @@ bool check_factorizations(std::vector<std::map<unsigned long, unsigned int>> vec
 //
 int main(int argc, char *argv[])
 {
-  const unsigned short ring_size = 4;
-  std::vector<std::map<unsigned long, unsigned int>> factorization_ring(ring_size);
+  unsigned short counter{0};
 
   for (unsigned int p = 2000;; ++p)
   {
-    factorization_ring[p % ring_size] = prime::factorize(p);
-    if (check_factorizations(factorization_ring))
+    auto factorization = prime::factorize(p);
+    if (factorization.size() != 4)
+    {
+      counter = 0;
+      continue;
+    }
+
+    ++counter;
+
+    if (counter == 4)
     {
       std::cout << p - 3 << "\n";
       return 0;
     };
   }
-}
-
-bool check_factorizations(std::vector<std::map<unsigned long, unsigned int>> vector)
-{
-  for (const auto& f : vector) if (f.size() != 4) return false;
-
-  return true;
 }
