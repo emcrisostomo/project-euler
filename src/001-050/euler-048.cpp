@@ -8,14 +8,15 @@ unsigned long pow_mod_n(unsigned long base, unsigned long exp, unsigned long mod
 //
 int main(int argc, char *argv[])
 {
+  const long mod = 10000000000;
   unsigned long sum{0};
 
   for (unsigned long i = 1; i <= 1000; ++i)
   {
-    sum += pow_mod_n(i, i, 10000000000);
+    sum += pow_mod_n(i, i, mod);
   }
 
-  std::cout << sum % 10000000000 << "\n";
+  std::cout << sum % mod << "\n";
   return 0;
 }
 
