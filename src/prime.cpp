@@ -15,7 +15,7 @@ std::vector<unsigned long> prime::get_primes_smaller_than(size_t limit)
   std::vector<unsigned long> primes;
   auto sieve = prime::sieve_of_erathostenes(limit);
 
-  for (auto i = 0; i < sieve.size(); ++i)
+  for (unsigned long i = 0; i < sieve.size(); ++i)
   {
     if (sieve[i]) primes.push_back(i);
   }

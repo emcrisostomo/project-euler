@@ -27,7 +27,7 @@ int main()
   std::vector<unsigned int> abundant_numbers;
   std::vector<bool> sums_of_abundant_numbers(limit + 1, false);
 
-  for (auto i = 2; i <= limit; ++i)
+  for (unsigned int i = 2; i <= limit; ++i)
   {
     auto d = divisors::proper_divisors_of(i);
     auto sum = std::accumulate(d.begin(), d.end(), 0u);
@@ -50,7 +50,7 @@ int main()
   unsigned int sum{0};
   for (auto i = 1; i < sums_of_abundant_numbers.size(); ++i)
   {
-    if (sums_of_abundant_numbers[i] == false)
+    if (!sums_of_abundant_numbers[i])
       sum += i;
   }
 

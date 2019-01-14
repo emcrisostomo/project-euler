@@ -21,9 +21,9 @@ int main()
 {
   std::set<mpz_class> values;
 
-  for (auto a = 2; a <= 100; ++a)
+  for (unsigned long a = 2; a <= 100; ++a)
   {
-    for (auto b = 2; b <= 100; ++b)
+    for (unsigned long b = 2; b <= 100; ++b)
     {
       mpz_class n_a{a};
       mpz_pow_ui(n_a.get_mpz_t(), n_a.get_mpz_t(), b);

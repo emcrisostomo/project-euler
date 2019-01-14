@@ -14,7 +14,7 @@ int main()
   const unsigned int limit = 1000000;
   unsigned long sum{0};
 
-  for (auto i = 1; i < limit; ++i)
+  for (unsigned long i = 1; i < limit; ++i)
   {
     if (number::is_palindrome(i, 2) && number::is_palindrome(i)) sum += i;
   }

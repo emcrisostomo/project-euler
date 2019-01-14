@@ -27,7 +27,7 @@ int main()
 {
   auto primes = prime::get_primes_smaller_than(1000);
 
-  unsigned int max_length_prime;
+  unsigned int max_length_prime{0};
   unsigned int max_length{0};
 
   for (unsigned long prime : primes)
