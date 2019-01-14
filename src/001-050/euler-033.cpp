@@ -1,6 +1,6 @@
 #include <iostream>
 #include <utility>
-#include "../multiple.h"
+#include "multiple.h"
 
 // The fraction 49/98 is a curious fraction, as an inexperienced mathematician
 // in attempting to simplify it may incorrectly believe that 49/98 = 4/8, which

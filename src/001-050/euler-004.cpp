@@ -1,6 +1,6 @@
 
 #include <iostream>
-#include "../number.h"
+#include "number.h"
 
 int main(int argc, char *argv[])
 {

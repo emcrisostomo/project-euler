@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../multiple.h"
+#include "multiple.h"
 
 int main()
 {

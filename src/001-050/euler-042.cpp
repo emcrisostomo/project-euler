@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 #include <cmath>
-#include "../number.h"
+#include "number.h"
 
 bool is_triangular_word(std::string word);
 

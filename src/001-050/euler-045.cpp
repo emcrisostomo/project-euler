@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../number.h"
+#include "number.h"
 
 unsigned long get_next_number();
 

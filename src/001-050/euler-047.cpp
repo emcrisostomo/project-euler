@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cmath>
-#include "../prime.h"
+#include "prime.h"
 
 // The first two consecutive numbers to have two distinct prime factors are:
 //

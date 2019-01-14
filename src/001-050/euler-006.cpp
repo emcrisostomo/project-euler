@@ -1,6 +1,6 @@
 #include <iostream>
-#include "../squares.h"
-#include "../sum.h"
+#include "squares.h"
+#include "sum.h"
 
 int main()
 {

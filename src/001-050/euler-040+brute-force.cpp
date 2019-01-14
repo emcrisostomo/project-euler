@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
-#include "../number.h"
+#include "number.h"
 
 void add_digits(unsigned int n, std::vector<unsigned short>& vector);
 

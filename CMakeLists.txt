@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 # Add MacPorts
 include_directories(/opt/local/include)
+include_directories(${PROJECT_SOURCE_DIR}/src)
 link_directories(/opt/local/lib)
 find_library(HAVE_GMP gmp)
 find_library(HAVE_GMPXX gmpxx)
@@ -69,7 +70,7 @@ add_executable(euler-045 src/001-050/euler-045.cpp src/number.h)
 add_executable(euler-046 src/001-050/euler-046.cpp src/prime.h src/prime.cpp)
 add_executable(euler-047 src/001-050/euler-047.cpp src/prime.h src/prime.cpp)
 add_executable(euler-048 src/001-050/euler-048.cpp)
-add_executable(euler-049 src/001-050/euler-049.cpp)
+add_executable(euler-049 src/001-050/euler-049.cpp src/prime.h src/prime.cpp)
 add_executable(euler-050 src/001-050/euler-050.cpp)
 add_executable(euler-067 src/051-100/euler-067.cpp src/triangle.cpp src/triangle.h)
 

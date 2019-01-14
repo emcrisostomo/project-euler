@@ -3,7 +3,7 @@
 #include <cmath>
 #include <stdexcept>
 #include <algorithm>
-#include "../number.h"
+#include "number.h"
 
 unsigned short digit_at(unsigned int digit);
 

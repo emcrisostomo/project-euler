@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "../factorial.h"
+#include "factorial.h"
 
 void calculate_factorials(std::vector<unsigned int>& vector, int limit);
 unsigned long sum_of_factorial_digits(unsigned int i, const std::vector<unsigned int>& factorials);

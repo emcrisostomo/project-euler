@@ -1,7 +1,7 @@
 #include <iostream>
 #include <numeric>
 #include <set>
-#include "../divisors.h"
+#include "divisors.h"
 
 // A perfect number is a number for which the sum of its proper divisors is
 // exactly equal to the number.  For example, the sum of the proper divisors of

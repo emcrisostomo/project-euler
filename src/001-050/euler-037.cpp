@@ -1,6 +1,6 @@
 #include <iostream>
-#include "../prime.h"
-#include "../number.h"
+#include "prime.h"
+#include "number.h"
 
 bool is_truncatable(int n, const std::vector<bool>& sieve);
 

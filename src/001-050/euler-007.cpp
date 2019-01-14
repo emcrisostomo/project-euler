@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "../prime.h"
+#include "prime.h"
 
 int main()
 {

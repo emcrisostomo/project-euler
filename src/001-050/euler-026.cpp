@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../prime.h"
+#include "prime.h"
 #include <gmpxx.h>
 
 unsigned int get_repeating_decimal_length(unsigned long prime);

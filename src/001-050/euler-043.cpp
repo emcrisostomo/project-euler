@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../number.h"
+#include "number.h"
 
 bool
 satisfy_divisibility(unsigned long d_2,

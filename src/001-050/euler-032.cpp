@@ -3,7 +3,7 @@
 #include <set>
 #include <numeric>
 #include <cmath>
-#include "../number.h"
+#include "number.h"
 
 void process_range(unsigned int min0,
                    unsigned int max0,

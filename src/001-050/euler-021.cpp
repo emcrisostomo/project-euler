@@ -4,7 +4,7 @@
 #include <vector>
 #include <cmath>
 #include <numeric>
-#include "../divisors.h"
+#include "divisors.h"
 
 // Let d(n) be defined as the sum of proper divisors of n (numbers less than n
 // which divide evenly into n).  If d(a) = b and d(b) = a, where a ≠ b, then a

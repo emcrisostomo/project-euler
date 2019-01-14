@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../prime.h"
+#include "prime.h"
 #include <cstdlib>
 
 long get_next_f(unsigned int n, const long& ac, const unsigned long& bc);
