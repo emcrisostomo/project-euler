@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 #include <set>
 #include <numeric>
 #include <cmath>

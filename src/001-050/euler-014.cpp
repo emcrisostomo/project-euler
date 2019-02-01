@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 #include <string>
 
 unsigned long collatz(unsigned int i);

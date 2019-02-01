@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 #include <exception>
 
 unsigned int get_days_in_month(unsigned int m, bool is_leap);

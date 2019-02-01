@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include "prime.h"
 #include <string>

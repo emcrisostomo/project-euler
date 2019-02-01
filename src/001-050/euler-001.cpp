@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 
 const unsigned int SUM_OF_TRIPLET_LIMIT = 1000;
 

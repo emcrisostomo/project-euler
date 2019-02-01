@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 
 const unsigned int SUM_OF_TRIPLET = 1000;
 
@@ -15,9 +14,9 @@ const unsigned int SUM_OF_TRIPLET = 1000;
 int main()
 {
 
-  for (auto a=0; a < SUM_OF_TRIPLET/3; ++a)
+  for (auto a = 0; a < SUM_OF_TRIPLET / 3; ++a)
   {
-    for (auto b=a+1; b < SUM_OF_TRIPLET/2; ++b)
+    for (auto b = a + 1; b < SUM_OF_TRIPLET / 2; ++b)
     {
       auto c = SUM_OF_TRIPLET - a - b;
 
