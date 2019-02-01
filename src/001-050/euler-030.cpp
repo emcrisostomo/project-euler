@@ -1,10 +1,11 @@
 #include <iostream>
 #include <vector>
+#include <array>
 #include <cmath>
 #include <numeric>
 
-bool is_sum_of_fifths_powers(int number, const std::vector<unsigned int>& powers);
-std::vector<unsigned int> calculate_fifth_powers();
+bool is_sum_of_fifths_powers(int number, const std::array<unsigned int, 10>& powers);
+std::array<unsigned int, 10> calculate_fifth_powers();
 
 // Surprisingly there are only three numbers that can be written as the sum of
 // fourth powers of their digits:
@@ -39,7 +40,7 @@ int main()
   //   6 9^5 = 354294
   const unsigned int limit = 354294;
 
-  std::vector<unsigned int> powers = calculate_fifth_powers();
+  std::array<unsigned int, 10> powers = calculate_fifth_powers();
   std::vector<unsigned int> numbers;
 
   // Lower bound can be improved
@@ -52,10 +53,9 @@ int main()
   return 0;
 }
 
-std::vector<unsigned int> calculate_fifth_powers()
+std::array<unsigned int, 10> calculate_fifth_powers()
 {
-  std::vector<unsigned int> powers;
-  powers.reserve(10);
+  std::array<unsigned int, 10> powers{};
 
   for (auto i = 0; i <= 9; ++i)
   {
@@ -65,7 +65,7 @@ std::vector<unsigned int> calculate_fifth_powers()
   return powers;
 }
 
-bool is_sum_of_fifths_powers(int number, const std::vector<unsigned int>& powers)
+bool is_sum_of_fifths_powers(int number, const std::array<unsigned int, 10>& powers)
 {
   unsigned int sum{0};
   auto n = number;

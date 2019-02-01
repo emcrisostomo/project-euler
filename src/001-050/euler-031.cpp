@@ -1,5 +1,5 @@
 #include <iostream>
-#include <vector>
+#include <array>
 
 // In England the currency is made up of pound, £, and pence, p, and there are
 // eight coins in general circulation:
@@ -15,8 +15,8 @@
 int main()
 {
   const unsigned int target = 200;
-  std::vector<unsigned int> coinSizes = {1, 2, 5, 10, 20, 50, 100, 200};
-  std::vector<unsigned long> ways(target+1);
+  std::array<unsigned int, 8> coinSizes = {1, 2, 5, 10, 20, 50, 100, 200};
+  std::array<unsigned long, target + 1> ways{};
   ways[0] = 1;
 
   for (unsigned int coinSize : coinSizes)

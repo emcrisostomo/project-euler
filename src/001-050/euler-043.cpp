@@ -1,5 +1,6 @@
 #include <iostream>
 #include <algorithm>
+#include <array>
 #include "number.h"
 
 bool
@@ -32,7 +33,7 @@ int main(int argc, char *argv[])
 {
   unsigned long sum{0};
 
-  std::vector<unsigned int> permutation = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  std::array<unsigned int, 10> permutation = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
   do
   {
