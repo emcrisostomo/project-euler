@@ -249,7 +249,7 @@ add_test(euler-048 euler-048)
 set_tests_properties(euler-048 PROPERTIES PASS_REGULAR_EXPRESSION "^9110846700\n$")
 
 add_test(euler-049 euler-049)
-set_tests_properties(euler-049 PROPERTIES PASS_REGULAR_EXPRESSION "^0\n$")
+set_tests_properties(euler-049 PROPERTIES PASS_REGULAR_EXPRESSION "^296962999629\n$")
 
 add_test(euler-050 euler-050)
 set_tests_properties(euler-050 PROPERTIES PASS_REGULAR_EXPRESSION "^0\n$")

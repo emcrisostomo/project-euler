@@ -20,7 +20,8 @@ int main(int argc, char *argv[])
 {
   const unsigned int limit = 9999;
   const auto sieve = prime::sieve_of_erathostenes(limit);
-  unsigned long sequence{0};
+  std::vector<unsigned int> primes;
+  primes.reserve(24);
 
   for (unsigned short f = 0; f <= 9; ++f)
   {
@@ -30,24 +31,42 @@ int main(int argc, char *argv[])
       {
         for (unsigned short fo = t; fo <= 9; ++fo)
         {
+          primes.clear();
           std::vector<unsigned short> digits{f, s, t, fo};
-          std::vector<unsigned int> primes;
-          primes.reserve(24);
 
           do
           {
             unsigned int n = number::number_from_digits<unsigned short, unsigned int>(digits);
+
+            if (n < 1000)
+              continue;
             if (sieve[n])
               primes.push_back(n);
           } while (std::next_permutation(digits.begin(), digits.end()));
 
           if (primes.size() < 3)
             continue;
+
+          std::sort(primes.begin(), primes.end());
+
+          for (auto i = 0; i < primes.size() - 2; ++i)
+          {
+            for (auto j = i + 1; j < primes.size() - 1; ++j)
+            {
+              for (auto k = j + 1; k < primes.size(); ++k)
+              {
+                if ((primes[k] - primes[j]) == (primes[j] - primes[i]))
+                {
+                  if (primes[i] == 1487) continue;
+                  std::cout << primes[i] << primes[j] << primes[k] << "\n";
+                }
+              }
+            }
+          }
         }
       }
     }
   }
 
-  std::cout << sequence << "\n";
   return 0;
 }
