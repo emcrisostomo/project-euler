@@ -1,7 +1,10 @@
 # Binaries
 cmake-build-debug/
+build/
 
 # CLion files
 .idea/workspace.xml
 .idea/usage.statistics.xml
 .idea/tasks.xml
+
+.vscode/
