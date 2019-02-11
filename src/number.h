@@ -83,6 +83,21 @@ namespace number
     return digits;
   }
 
+  template<typename T, typename R>
+  R number_from_digits(std::vector<T> digits, T base = 10)
+  {
+    R ret{0};
+
+    for (auto i = digits.rbegin(); i != digits.rend(); ++i)
+    {
+      ret *= base;
+      ret += *i;
+    }
+
+    return ret;
+  }
+
+
   template<typename T>
   bool is_pandigital(T product, bool zero_included = false, T base = 10)
   {
