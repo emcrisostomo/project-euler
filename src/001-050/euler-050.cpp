@@ -1,4 +1,5 @@
 #include <iostream>
+#include "prime.h"
 
 // The prime 41, can be written as the sum of six consecutive primes:
 //
@@ -15,7 +16,32 @@
 //
 int main(int argc, char *argv[])
 {
-  unsigned long prime{0};
-  std::cout << prime << "\n";
+  const unsigned int limit = 999999;
+  const std::vector<bool> sieve = prime::sieve_of_erathostenes(limit);
+  unsigned long longest_prime{0};
+  unsigned long max_consecutive_primes{0};
+
+  for (auto k = 1; k < sieve.size(); ++k)
+  {
+    unsigned long prime{0};
+    unsigned long consecutive_primes{0};
+
+    for (auto i = k; i < sieve.size(); ++i)
+    {
+      if (!sieve[i]) continue;
+      prime += i;
+      consecutive_primes++;
+
+      if (prime > limit) break;
+
+      if (sieve[prime] && consecutive_primes > max_consecutive_primes)
+      {
+        longest_prime = prime;
+        max_consecutive_primes = consecutive_primes;
+      }
+    }
+  }
+
+  std::cout << longest_prime << "\n";
   return 0;
 }
