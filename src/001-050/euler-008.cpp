@@ -28,24 +28,6 @@ const unsigned int digits[NUMBER_OF_DIGITS] =  {
   7,1,6,3,6,2,6,9,5,6,1,8,8,2,6,7,0,4,2,8,2,5,2,4,8,3,6,0,0,8,2,3,2,5,7,5,3,0,4,2,0,7,5,2,9,6,3,4,5,0  };
 // @formatter:on
 
-int main2()
-{
-  unsigned long max = 0;
-
-  for (auto i = 0; i < NUMBER_OF_DIGITS - SEQUENCE_LENGTH + 1; ++i)
-  {
-    unsigned long current_sequence = 1;
-
-    for (auto j = 0; j < SEQUENCE_LENGTH; ++j) current_sequence *= digits[i + j];
-
-    max = (current_sequence > max ? current_sequence : max);
-  }
-
-  std::cout << max << "\n";
-
-  return 0;
-}
-
 bool get_next_sequence(size_t& current_pos)
 {
   ++current_pos;
