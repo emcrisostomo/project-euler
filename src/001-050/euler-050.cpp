@@ -28,8 +28,12 @@ int main(int argc, char *argv[])
     sum_of_primes[i + 1] = sum_of_primes[i] + primes[i];
   }
 
+  // Iterate on all the possible sequences of consecutive prime numbers of
+  // length i, from longest to shortest.
   for (auto i = primes.size(); i >= 1; --i)
   {
+    // Calculate the sum of all the possible sequences of length i, from the
+    // lowest to the highest.
     for (auto begin = 0; begin < sum_of_primes.size() - i; ++begin)
     {
       auto end{begin + i};
