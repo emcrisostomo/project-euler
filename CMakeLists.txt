@@ -71,7 +71,8 @@ add_executable(euler-046 src/001-050/euler-046.cpp src/prime.h src/prime.cpp)
 add_executable(euler-047 src/001-050/euler-047.cpp src/prime.h src/prime.cpp)
 add_executable(euler-048 src/001-050/euler-048.cpp)
 add_executable(euler-049 src/001-050/euler-049.cpp src/number.h src/prime.h src/prime.cpp)
-add_executable(euler-050 src/001-050/euler-050+brute-force.cpp src/prime.h src/prime.cpp)
+add_executable(euler-050+brute-force src/001-050/euler-050+brute-force.cpp src/prime.h src/prime.cpp)
+add_executable(euler-050 src/001-050/euler-050.cpp src/prime.h src/prime.cpp)
 add_executable(euler-067 src/051-100/euler-067.cpp src/triangle.cpp src/triangle.h)
 
 # tests
@@ -250,6 +251,9 @@ set_tests_properties(euler-048 PROPERTIES PASS_REGULAR_EXPRESSION "^9110846700\n
 
 add_test(euler-049 euler-049)
 set_tests_properties(euler-049 PROPERTIES PASS_REGULAR_EXPRESSION "^296962999629\n$")
+
+add_test(euler-050+brute-force euler-050+brute-force)
+set_tests_properties(euler-050+brute-force PROPERTIES PASS_REGULAR_EXPRESSION "^997651\n$")
 
 add_test(euler-050 euler-050)
 set_tests_properties(euler-050 PROPERTIES PASS_REGULAR_EXPRESSION "^997651\n$")
