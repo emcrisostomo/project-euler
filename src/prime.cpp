@@ -96,14 +96,17 @@ unsigned long long prime::largest_prime_factor_of(unsigned long long number)
   return factorization.empty() ? 0 : factorization.rbegin()->first;
 }
 
-bool prime::is_prime(unsigned long number)
+bool prime::is_prime(const unsigned long number)
 {
   // Return empty factorizations for non-composite numbers.
   if (number == 0) return false;
   if (number == 1) return false;
   if (number == 2) return true;
+  if (number % 2 == 0) return false;
 
-  for (auto i = 2; i <= std::sqrt(number); ++i)
+  auto end = std::sqrt(number);
+
+  for (auto i = 3; i <= end; i += 2)
   {
     if (number % i == 0)
     {
