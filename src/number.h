@@ -84,7 +84,7 @@ namespace number
   }
 
   template<typename T, typename R>
-  R number_from_digits(std::vector<T> digits, T base = 10)
+  R number_from_digits(const std::vector<T>& digits, T base = 10)
   {
     R ret{0};
 
@@ -195,6 +195,31 @@ namespace number
     }
 
     return (n == reversed);
+  }
+
+  template<typename T>
+  void next_number(std::vector<T>& digits)
+  {
+    bool carry = false;
+
+    for (auto i = 0; i < digits.size(); ++i)
+    {
+      if (carry)
+      {
+        ++digits[i];
+        carry = false;
+      }
+
+      ++digits[i];
+
+      if (digits[i] >= 10)
+      {
+        digits[i] -= 10;
+        carry = true;
+      }
+    }
+
+    if (carry) digits.push_back(1);
   }
 }
 
