@@ -3,7 +3,7 @@
     <option name="FORMATTER_TAGS_ENABLED" value="true" />
     <option name="SOFT_MARGINS" value="80,120" />
     <Objective-C>
-      <option name="INDENT_NAMESPACE_MEMBERS" value="0" />
+      <option name="INDENT_NAMESPACE_MEMBERS" value="2" />
       <option name="INDENT_C_STRUCT_MEMBERS" value="2" />
       <option name="INDENT_CLASS_MEMBERS" value="2" />
       <option name="INDENT_INSIDE_CODE_BLOCK" value="2" />
