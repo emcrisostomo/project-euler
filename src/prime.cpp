@@ -103,11 +103,9 @@ bool prime::is_prime(unsigned long number)
   if (number == 1) return false;
   if (number == 2) return true;
 
-  auto n = number;
-
-  for (auto i = 2; i <= std::sqrt(n); ++i)
+  for (auto i = 2; i <= std::sqrt(number); ++i)
   {
-    if (n % i == 0)
+    if (number % i == 0)
     {
       return false;
     }
