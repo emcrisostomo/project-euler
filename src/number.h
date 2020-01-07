@@ -73,6 +73,7 @@ namespace number
   std::vector<unsigned short> get_digits(T number, T base = 10)
   {
     std::vector<unsigned short> digits;
+    digits.reserve((log(number)) / (log(base)) + 1);
 
     while (number)
     {
