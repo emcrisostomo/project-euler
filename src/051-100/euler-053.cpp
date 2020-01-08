@@ -29,8 +29,12 @@ int main(int argc, char *argv[])
       if (combinations::binom<unsigned long>(n, r) > 1000000)
       {
         // When we find that \binom{n}{r} > x, we can break since
-        //   \binom{n}{r + 1} > \binom{n}{r} iff (r + 1) < floor(n/r + 1)
-        counter += ((((n - 1) / 2) - r + 1) * 2 + (n - 1) % 2);
+        // increases monotonically when r \in [0, floor(n/2)] and is symmetric
+        // around floor(n/2).  It's sufficient to calculate the number of valid
+        // r values from the first that matches the threshold up to floor(n/2),
+        // count them twice to account for vertical symmetry, and add a central
+        // max value if n is even.
+        counter += 2 * ((n - 1) / 2 - r + 1) + ((n - 1) % 2);
         break;
       }
     }
