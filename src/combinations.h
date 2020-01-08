@@ -6,6 +6,7 @@
 #define PROJECT_EULER_COMBINATIONS_H
 
 #include <vector>
+#include <map>
 #include <string>
 #include <algorithm>
 #include <iostream>
@@ -45,6 +46,24 @@ std::vector<T> get(const std::vector<T>& set, std::vector<bool>& combination_mas
 bool next(std::vector<bool>& combination_mask)
 {
   return std::prev_permutation(combination_mask.begin(), combination_mask.end());
+}
+
+template <typename T, typename R = T>
+R binom(T n, T r)
+{
+  static std::map<std::pair<T, T>, R> cache;
+
+  if (n < 0 || r < 0) throw std::runtime_error("n and r must be positive");
+
+  if (r > n) return 0;
+  if (r == n) return 1;
+
+  const auto& pair = std::make_pair(n, r);
+
+  if (cache.find(pair) == cache.end())
+    cache[pair] = binom<T, R>(n - 1, r) + binom<T, R>(n - 1, r - 1);
+
+  return cache[pair];
 }
 }
 
