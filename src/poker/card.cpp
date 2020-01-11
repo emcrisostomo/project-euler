@@ -24,14 +24,6 @@ emc::poker::card::rank::rank(const std::string& r)
 
 emc::poker::card::suit::suit(const std::string& s)
 {
-  //  9C 6D KD 3H 4C QS QC AC KH
-  //JC 6S 5H 2H 2D KD 9D 7C AS JS
-  //AD QH TH 9D 8H TS 6D 3S AS AC
-  //2H 4S 5C 5S TC KC JD 6C TS 3C
-  //QD AS 6H JS 2C 3D 9H KC 4H 8S
-  //KD 8S 9S 7C 2S 3S 6D 6S 4H KC
-  //3C 8C 2D 7D 4D 9S 4S QH 4H JD
-  //8C KC 7S TC 2D TS 8H QD AC 5C
   if (s == "C") value = CLUBS;
   else if (s == "D") value = DIAMONDS;
   else if (s == "H") value = HEARTS;
