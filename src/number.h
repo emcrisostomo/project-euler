@@ -233,6 +233,8 @@ T reverse(T i, T base = 10)
 
 bool is_lychrel(unsigned long i)
 {
+  if (i == 0) return false;
+
   size_t iterations{0};
 
   do
