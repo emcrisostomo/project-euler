@@ -78,6 +78,7 @@ add_executable(euler-052 src/051-100/euler-052.cpp src/number.h)
 add_executable(euler-053 src/051-100/euler-053.cpp)
 add_executable(euler-054 src/051-100/euler-054.cpp src/poker/card.cpp src/poker/card.h src/poker/hand.cpp src/poker/hand.h)
 add_executable(euler-055 src/051-100/euler-055.cpp src/number.h)
+add_executable(euler-056 src/051-100/euler-056.cpp src/number.h)
 add_executable(euler-067 src/051-100/euler-067.cpp src/triangle.cpp src/triangle.h)
 
 # tests
