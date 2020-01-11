@@ -223,9 +223,27 @@ void next_number(std::vector<T>& digits)
   if (carry) digits.push_back(1);
 }
 
-bool is_lychrel(int i)
+template<typename T>
+T reverse(T i, T base = 10)
 {
-  return false;
+  const std::vector<unsigned short>& digits = get_digits(i, base);
+
+  return number_from_digits<unsigned short, T>(std::vector<unsigned short>(digits.rbegin(), digits.rend()));
+}
+
+bool is_lychrel(unsigned long i)
+{
+  size_t iterations{0};
+
+  do
+  {
+    ++iterations;
+    i += reverse(i);
+
+    if (is_palindrome(i)) return false;
+  } while (iterations < 50);
+
+  return true;
 }
 }
 
