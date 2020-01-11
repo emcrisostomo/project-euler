@@ -76,7 +76,7 @@ add_executable(euler-050 src/001-050/euler-050.cpp src/prime.h src/prime.cpp)
 add_executable(euler-051 src/051-100/euler-051.cpp src/prime.h src/prime.cpp)
 add_executable(euler-052 src/051-100/euler-052.cpp src/number.h)
 add_executable(euler-053 src/051-100/euler-053.cpp)
-add_executable(euler-054 src/051-100/euler-054.cpp)
+add_executable(euler-054 src/051-100/euler-054.cpp src/poker/card.cpp src/poker/card.h src/poker/hand.cpp src/poker/hand.h)
 add_executable(euler-067 src/051-100/euler-067.cpp src/triangle.cpp src/triangle.h)
 
 # tests
@@ -271,8 +271,8 @@ set_tests_properties(euler-052 PROPERTIES PASS_REGULAR_EXPRESSION "^142857\n$")
 add_test(euler-053 euler-053)
 set_tests_properties(euler-053 PROPERTIES PASS_REGULAR_EXPRESSION "^4075\n$")
 
-add_test(euler-054 euler-054)
-set_tests_properties(euler-054 PROPERTIES PASS_REGULAR_EXPRESSION "^\n$")
+add_test(euler-054 euler-054 ${PROJECT_SOURCE_DIR}/src/051-100/p054_poker.txt)
+set_tests_properties(euler-054 PROPERTIES PASS_REGULAR_EXPRESSION "^376\n$")
 
 add_test(euler-067 euler-067 ${PROJECT_SOURCE_DIR}/src/051-100/p067_triangle.txt)
 set_tests_properties(euler-067 PROPERTIES PASS_REGULAR_EXPRESSION "^7273\n$")
