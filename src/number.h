@@ -73,6 +73,13 @@ template<typename T>
 std::vector<unsigned short> get_digits(T number, T base = 10)
 {
   std::vector<unsigned short> digits;
+
+  if (number == 0)
+  {
+    digits.push_back(0);
+    return digits;
+  }
+
   digits.reserve((log(number)) / (log(base)) + 1);
 
   while (number)
