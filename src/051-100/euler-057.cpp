@@ -1,4 +1,6 @@
 #include <iostream>
+#include <gmpxx.h>
+#include "number.h"
 
 // It is possible to show that the square root of two can be expressed as an
 // infinite continued fraction.
@@ -21,7 +23,37 @@
 //
 int main(int argc, char *argv[])
 {
+  // The series can be expressed recursively as:
+  //
+  //   f_{k + 1} = 1 + \frac{1}{1 + f_k}
+  //
+  // If f_k = n_k/d_k, we have:
+  //
+  //   f_{k + 1} = 1 + \frac{1}{1 + {\frac{n_k}{d_k}}
+  //             = 1 + \frac{1}{{\frac{n_k + d_k}{d_k}}
+  //             = 1 + \frac{d_k}{n_k + d_k}}
+  //             = \frac{n_k + 2 d_k}{n_k + d_k}
+  //
+  // Hence a recursive formula can be given for both the numerator and the
+  // denominator:
+  //
+  //   n_{k+1} = n_k + 2 d_k
+  //   d_{k+1} = n_k + d_k
+  //
   size_t count{0};
+
+  mpz_class nk{3};
+  mpz_class dk{2};
+
+  for (auto i=0; i < 1000; ++i)
+  {
+    auto nk_copy {nk};
+    nk = nk + 2 * dk;
+    dk = nk_copy + dk;
+
+    if (nk.get_str(10).size() > dk.get_str(10).size()) ++count;
+  }
+
   std::cout << count << '\n';
 
   return 0;
