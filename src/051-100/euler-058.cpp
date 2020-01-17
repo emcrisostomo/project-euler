@@ -24,7 +24,6 @@
 int main(int argc, char *argv[])
 {
   unsigned long current_number{1};
-  size_t square_size{1};
   size_t diagonal_size{1};
   size_t primes_in_diagonals{0};
 
@@ -37,12 +36,10 @@ int main(int argc, char *argv[])
       if (prime::is_prime(current_number)) ++primes_in_diagonals;
     }
 
-    square_size += 2;
-
     if (diagonal_size > primes_in_diagonals * 10) break;
   }
 
-  std::cout << square_size << '\n';
+  std::cout << (diagonal_size + 1) / 2 << '\n';
 
   return 0;
 }
