@@ -29,12 +29,16 @@ int main(int argc, char *argv[])
 
   for (auto i = 2;; i += 2)
   {
-    for (auto c = 0; c < 4; ++c)
+    for (auto c = 0; c < 3; ++c)
     {
       current_number += i;
       ++diagonal_size;
       if (prime::is_prime(current_number)) ++primes_in_diagonals;
     }
+
+    // Avoid primality tests for numbers on the South East diagonal
+    current_number += i;
+    ++diagonal_size;
 
     if (diagonal_size > primes_in_diagonals * 10) break;
   }
