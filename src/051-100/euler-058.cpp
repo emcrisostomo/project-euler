@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 
   for (auto i = 2;; i += 2)
   {
-    for (auto c=0; c < 4; ++c)
+    for (auto c = 0; c < 4; ++c)
     {
       current_number += i;
       ++diagonal_size;
