@@ -2,11 +2,16 @@
 #include <fstream>
 #include <vector>
 #include <cassert>
+#include <string>
+#include <numeric>
+#include <set>
 #include "number.h"
 
-void parse_bytes(std::string& line, std::vector<char>& bytes);
-void parse_token(const std::string& char_value, std::vector<char>& bytes);
-std::vector<std::vector<char>> split_bytes_in_stacks(const std::vector<char>& bytes);
+void parse_bytes(std::string& line, std::vector<unsigned char>& bytes);
+void parse_token(const std::string& char_value, std::vector<unsigned char>& bytes);
+unsigned long is_enc_text_valid(const std::vector<unsigned char>& bytes,
+                                const std::vector<unsigned char>& enc_key);
+bool is_valid_byte(unsigned char& c);
 
 // Each character on a computer is assigned a unique code and the preferred
 // standard is ASCII (American Standard Code for Information Interchange).  For
@@ -46,48 +51,89 @@ main(int argc, char *argv[])
 
   std::fstream infile(argv[1]);
   std::string line;
-  std::vector<char> bytes;
+  std::vector<unsigned char> bytes;
 
   while (std::getline(infile, line))
   {
     parse_bytes(line, bytes);
   }
 
-  std::vector<std::vector<char>> bytes_stacks = split_bytes_in_stacks(bytes);
+  unsigned long text_sum{0};
 
   for (auto i = 0; i < 26 * 26 * 26; ++i)
   {
+    std::vector<unsigned char> enc_key;
+    enc_key.reserve(3);
     std::vector<unsigned short> digits = number::get_digits(i, 26);
     digits.resize(3);
 
     for (const auto& d : digits)
     {
-      std::cout << static_cast<char>('a' + d);
+      enc_key.push_back(static_cast<unsigned char>('a' + d));
     }
 
-    std::cout << '\n';
+    text_sum = is_enc_text_valid(bytes, enc_key);
+
+    if (text_sum != 0) break;
   }
 
-  std::cout << 0 << '\n';
+  unsigned char a = 'c';
+  is_valid_byte(a);
+  std::cout << text_sum << '\n';
   return 0;
 }
 
-std::vector<std::vector<char>>
-split_bytes_in_stacks(const std::vector<char>& bytes)
+unsigned long
+is_enc_text_valid(
+  const std::vector<unsigned char>& bytes,
+  const std::vector<unsigned char>& enc_key)
 {
-  std::vector<std::vector<char>> stacks(3);
-
-  for (auto v : stacks)
-    v.reserve(bytes.size() / 3 + 1);
+  std::vector<unsigned char> decrypted_bytes(bytes.size());
 
   for (auto i = 0; i < bytes.size(); ++i)
-    stacks[i % 3].push_back(bytes[i]);
+  {
+    decrypted_bytes[i] = bytes[i] ^ enc_key[i % 3];
 
-  return stacks;
+    if (!is_valid_byte(decrypted_bytes[i])) return 0;
+  }
+
+  unsigned long text_sum{0};
+  text_sum = std::accumulate(decrypted_bytes.begin(), decrypted_bytes.end(), text_sum);
+
+  return text_sum;
+}
+
+bool is_valid_byte(unsigned char& c)
+{
+  static std::set<unsigned char> invalid;
+
+  bool valid =
+    (c == ' ')
+    || (c == '.')
+    || (c == ',')
+    || (c == '!')
+    || (c == '?')
+    || (c == ':')
+    || (c == ';')
+    || (c == '\'')
+    || (c == '-')
+    || (c == '(')
+    || (c == ')')
+    || ((c >= 'a') && (c <= 'z'))
+    || ((c >= 'A') && (c <= 'Z'))
+    || ((c >= '0') && (c <= '9'));
+
+  if (!valid)
+  {
+    invalid.insert(c);
+    std::cout << c << '\n';
+  }
+
+  return valid;
 }
 
 void
-parse_bytes(std::string& line, std::vector<char>& bytes)
+parse_bytes(std::string& line, std::vector<unsigned char>& bytes)
 {
   // The line is a comma-separated list of char values.
   const std::string delimiter = ",";
@@ -106,7 +152,7 @@ parse_bytes(std::string& line, std::vector<char>& bytes)
 }
 
 void
-parse_token(const std::string& char_value, std::vector<char>& bytes)
+parse_token(const std::string& char_value, std::vector<unsigned char>& bytes)
 {
-  bytes.push_back(static_cast<char>(std::stoi(char_value)));
+  bytes.push_back(static_cast<unsigned char>(std::stoi(char_value)));
 }
