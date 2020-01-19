@@ -86,6 +86,7 @@ target_link_libraries(euler-057 PRIVATE gmpxx)
 target_link_libraries(euler-057 PRIVATE gmp)
 add_executable(euler-058 src/051-100/euler-058.cpp src/prime.h src/prime.cpp)
 add_executable(euler-059 src/051-100/euler-059.cpp src/number.h)
+add_executable(euler-060 src/051-100/euler-060.cpp src/prime.h src/prime.cpp)
 add_executable(euler-067 src/051-100/euler-067.cpp src/triangle.cpp src/triangle.h)
 
 # tests
