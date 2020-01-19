@@ -4,14 +4,18 @@
 #include <cassert>
 #include <string>
 #include <numeric>
-#include <set>
 #include "number.h"
+
+static const int ALPHABET_SIZE = 26;
+static constexpr int COMBINATION_NUM = ALPHABET_SIZE * ALPHABET_SIZE * ALPHABET_SIZE;
+static const int KEY_SIZE = 3;
 
 void parse_bytes(std::string& line, std::vector<unsigned char>& bytes);
 void parse_token(const std::string& char_value, std::vector<unsigned char>& bytes);
 unsigned long is_enc_text_valid(const std::vector<unsigned char>& bytes,
                                 const std::vector<unsigned char>& enc_key);
 bool is_valid_byte(unsigned char& c);
+void calculate_enc_key(std::vector<unsigned char>& enc_key, int i);
 
 // Each character on a computer is assigned a unique code and the preferred
 // standard is ASCII (American Standard Code for Information Interchange).  For
@@ -54,33 +58,35 @@ main(int argc, char *argv[])
   std::vector<unsigned char> bytes;
 
   while (std::getline(infile, line))
-  {
     parse_bytes(line, bytes);
-  }
 
   unsigned long text_sum{0};
+  std::vector<unsigned char> enc_key;
+  enc_key.reserve(KEY_SIZE);
 
-  for (auto i = 0; i < 26 * 26 * 26; ++i)
+  for (auto i = 0; i < COMBINATION_NUM; ++i)
   {
-    std::vector<unsigned char> enc_key;
-    enc_key.reserve(3);
-    std::vector<unsigned short> digits = number::get_digits(i, 26);
-    digits.resize(3);
-
-    for (const auto& d : digits)
-    {
-      enc_key.push_back(static_cast<unsigned char>('a' + d));
-    }
+    calculate_enc_key(enc_key, i);
 
     text_sum = is_enc_text_valid(bytes, enc_key);
 
     if (text_sum != 0) break;
   }
 
-  unsigned char a = 'c';
-  is_valid_byte(a);
   std::cout << text_sum << '\n';
   return 0;
+}
+
+void
+calculate_enc_key(std::vector<unsigned char>& enc_key, int i)
+{
+  enc_key.clear();
+
+  std::vector<unsigned short> digits = number::get_digits(i, ALPHABET_SIZE);
+  digits.resize(KEY_SIZE);
+
+  for (const auto& d : digits)
+    enc_key.push_back('a' + d);
 }
 
 unsigned long
@@ -92,9 +98,12 @@ is_enc_text_valid(
 
   for (auto i = 0; i < bytes.size(); ++i)
   {
-    decrypted_bytes[i] = bytes[i] ^ enc_key[i % 3];
+    unsigned char decrypted_byte = (bytes[i] ^ enc_key[i % KEY_SIZE]);
 
-    if (!is_valid_byte(decrypted_bytes[i])) return 0;
+    if (!is_valid_byte(decrypted_byte))
+      return 0;
+
+    decrypted_bytes[i] = decrypted_byte;
   }
 
   unsigned long text_sum{0};
@@ -103,11 +112,10 @@ is_enc_text_valid(
   return text_sum;
 }
 
-bool is_valid_byte(unsigned char& c)
+bool
+is_valid_byte(unsigned char& c)
 {
-  static std::set<unsigned char> invalid;
-
-  bool valid =
+  return
     (c == ' ')
     || (c == '.')
     || (c == ',')
@@ -119,17 +127,17 @@ bool is_valid_byte(unsigned char& c)
     || (c == '-')
     || (c == '(')
     || (c == ')')
+    || (c == '[')
+    || (c == ']')
+    || (c == '+')
+    || (c == '*')
+    || (c == '/')
+    || (c == '=')
+    || (c == '"')
+    || (c == '&')
     || ((c >= 'a') && (c <= 'z'))
     || ((c >= 'A') && (c <= 'Z'))
     || ((c >= '0') && (c <= '9'));
-
-  if (!valid)
-  {
-    invalid.insert(c);
-    std::cout << c << '\n';
-  }
-
-  return valid;
 }
 
 void
