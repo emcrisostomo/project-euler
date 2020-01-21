@@ -65,6 +65,26 @@ R binom(T n, T r)
 
   return cache[pair];
 }
+
+template<typename T>
+std::vector<T>
+get_masked_elements(const std::vector<T>& elements, const std::vector<bool>& mask)
+{
+  assert(elements.size() == mask.size());
+
+  std::vector<T> ret;
+//  ret.reserve(mask.size());
+
+  for (auto i = 0; i < mask.size(); ++i)
+  {
+    if (mask[i])
+      ret.push_back(elements[i]);
+    if (ret.size() == 5)
+      break;
+  }
+
+  return ret;
+}
 }
 
 #endif //PROJECT_EULER_COMBINATIONS_H
