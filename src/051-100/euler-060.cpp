@@ -35,7 +35,8 @@ main(int argc, char *argv[])
 
   do
   {
-    const std::vector<unsigned long>& masked_primes = combinations::get_masked_elements(primes, primes_mask);
+    const std::vector<unsigned long>& masked_primes = combinations::with_permutation::get_masked_elements(primes,
+                                                                                                          primes_mask);
 
     if (is_concatenated_family(masked_primes))
     {
@@ -62,7 +63,7 @@ is_concatenated_family(const std::vector<unsigned long>& primes)
 
   do
   {
-    const std::vector<unsigned long>& prime_pair = combinations::get_masked_elements(primes, mask);
+    const std::vector<unsigned long>& prime_pair = combinations::with_permutation::get_masked_elements(primes, mask);
     const auto& f = prime_pair[0];
     const auto& s = prime_pair[1];
 
