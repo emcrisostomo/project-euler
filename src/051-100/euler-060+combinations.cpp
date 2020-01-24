@@ -11,11 +11,7 @@ static const int FAMILY_SIZE = 5;
 unsigned long find_min_sum_of_family_of_size(const std::vector<unsigned long>& candidates, size_t family_size);
 bool is_concatenated_pair_prime(const unsigned long& f, const unsigned long& s);
 bool is_concatenated_family(const std::vector<unsigned long>& primes, size_t last_changed, size_t& last_match);
-std::vector<unsigned long> get_elements_by_index(const std::vector<unsigned long>& vector, const std::vector<size_t>& indexes);
-unsigned long next_combination(std::vector<size_t>& vector, size_t n, size_t k);
-size_t next_combination_starting_from(std::vector<size_t>& vector, size_t n, size_t k, size_t last_match);
 std::vector<unsigned long> find_pairs_of(const unsigned long& p, size_t index, const std::vector<unsigned long>& primes);
-std::vector<size_t> init_combination(size_t k);
 bool check_concatenated_family(const std::vector<unsigned long>& primes, size_t last_changed);
 
 // The primes 3, 7, 109, and 673, are quite remarkable.  By taking any two
@@ -79,12 +75,12 @@ find_min_sum_of_family_of_size(const std::vector<unsigned long>& candidates, siz
   const size_t k = family_size;
   const size_t n = candidates.size();
 
-  std::vector<size_t> comb_index = init_combination(k);
+  std::vector<size_t> comb_index = combinations::init_combination(k);
   size_t last_changed{0};
 
   while (comb_index[k - 1] < n)
   {
-    const std::vector<unsigned long>& prime_family = get_elements_by_index(candidates, comb_index);
+    const std::vector<unsigned long>& prime_family = combinations::get_elements_by_index(candidates, comb_index);
 
     size_t last_match{0};
 
@@ -92,81 +88,15 @@ find_min_sum_of_family_of_size(const std::vector<unsigned long>& candidates, siz
     {
       unsigned long family_sum{std::accumulate(prime_family.begin(), prime_family.end(), 0UL)};
       ret = std::min(ret, family_sum);
-      last_changed = next_combination(comb_index, n, k);
+      last_changed = combinations::next_combination(comb_index, n, k);
     }
     else
     {
       // we have to skip all the combinations that have the first last_match
       // elements in common
-      last_changed = next_combination_starting_from(comb_index, n, k, last_match);
+      last_changed = combinations::next_combination_starting_from(comb_index, n, k, last_match);
     }
   }
-
-  return ret;
-}
-
-std::vector<size_t>
-init_combination(size_t k)
-{
-  std::vector<size_t> comb_index(k);
-  for (auto i = 0; i < k; ++i)
-    comb_index[i] = i;
-
-  return comb_index;
-}
-
-// TODO: k could be deduced from the vector size
-unsigned long
-next_combination(std::vector<size_t>& vector, size_t n, size_t k)
-{
-  size_t idx = k - 1;
-
-  while (idx != 0 && vector[idx] == n - k + idx)
-    --idx;
-
-  const size_t changed_index = idx;
-  ++vector[idx];
-
-  for (auto i = idx + 1; i < k; ++i)
-    vector[i] = vector[i - 1] + 1;
-
-  return changed_index;
-}
-
-size_t
-next_combination_starting_from(std::vector<size_t>& vector,
-                               const size_t n,
-                               const size_t k,
-                               size_t last_match)
-{
-  if (last_match >= vector.size())
-    throw std::runtime_error("last_match out of range");
-
-  size_t idx = k - 1;
-
-  while (idx != 0 && vector[idx] == n - k + idx)
-    --idx;
-
-  if (idx > last_match)
-    idx = last_match;
-
-  const size_t changed_index = idx;
-  ++vector[idx];
-
-  for (auto i = idx + 1; i < k; ++i)
-    vector[i] = vector[i - 1] + 1;
-
-  return changed_index;
-}
-
-std::vector<unsigned long>
-get_elements_by_index(const std::vector<unsigned long>& vector, const std::vector<size_t>& indexes)
-{
-  std::vector<unsigned long> ret;
-  ret.reserve(indexes.size());
-
-  for (const auto& i : indexes)
-    ret.push_back(vector[i]);
 
   return ret;
 }

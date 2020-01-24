@@ -16,6 +16,12 @@ namespace combinations
 template<typename T, typename R = T>
 R binom(T n, T r);
 
+std::vector<size_t> init_combination(size_t k);
+unsigned long next_combination(std::vector<size_t>& vector, size_t n, size_t k);
+size_t next_combination_starting_from(std::vector<size_t>& vector, size_t n, size_t k, size_t last_match);
+std::vector<unsigned long>
+get_elements_by_index(const std::vector<unsigned long>& vector, const std::vector<size_t>& indexes);
+
 template<typename T, typename R>
 R binom(T n, T r)
 {
@@ -32,6 +38,72 @@ R binom(T n, T r)
     cache[pair] = binom<T, R>(n - 1, r) + binom<T, R>(n - 1, r - 1);
 
   return cache[pair];
+}
+
+std::vector<size_t>
+init_combination(size_t k)
+{
+  std::vector<size_t> comb_index(k);
+  for (auto i = 0; i < k; ++i)
+    comb_index[i] = i;
+
+  return comb_index;
+}
+
+// TODO: k could be deduced from the vector size
+unsigned long
+next_combination(std::vector<size_t>& vector, size_t n, size_t k)
+{
+  size_t idx = k - 1;
+
+  while (idx != 0 && vector[idx] == n - k + idx)
+    --idx;
+
+  const size_t changed_index = idx;
+  ++vector[idx];
+
+  for (auto i = idx + 1; i < k; ++i)
+    vector[i] = vector[i - 1] + 1;
+
+  return changed_index;
+}
+
+size_t
+next_combination_starting_from(std::vector<size_t>& vector,
+                               const size_t n,
+                               const size_t k,
+                               size_t last_match)
+{
+  if (last_match >= vector.size())
+    throw std::runtime_error("last_match out of range");
+
+  size_t idx = k - 1;
+
+  while (idx != 0 && vector[idx] == n - k + idx)
+    --idx;
+
+  if (idx > last_match)
+    idx = last_match;
+
+  const size_t changed_index = idx;
+  ++vector[idx];
+
+  for (auto i = idx + 1; i < k; ++i)
+    vector[i] = vector[i - 1] + 1;
+
+  return changed_index;
+}
+
+std::vector<unsigned long>
+get_elements_by_index(const std::vector<unsigned long>& vector, const std::vector<size_t>& indexes)
+{
+  std::vector<unsigned long> ret;
+  ret.reserve(indexes.size());
+
+  for (const auto& i : indexes)
+    ret.push_back(vector[i]);
+
+  return ret;
 }
 
 namespace with_permutation
