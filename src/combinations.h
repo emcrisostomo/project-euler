@@ -20,6 +20,13 @@ std::vector<T> get(const std::vector<T>& set, std::vector<bool>& combination_mas
 
 bool next(std::vector<bool>& combination_mask);
 
+template<typename T, typename R = T>
+R binom(T n, T r);
+
+template<typename T>
+std::vector<T>
+get_masked_elements(const std::vector<T>& elements, const std::vector<bool>& mask);
+
 std::vector<bool> init(size_t k, size_t n)
 {
   if (k <= 0) throw std::runtime_error("k must be greater than 0");
