@@ -55,7 +55,7 @@ bool next(std::vector<bool>& combination_mask)
   return std::prev_permutation(combination_mask.begin(), combination_mask.end());
 }
 
-template <typename T, typename R = T>
+template<typename T, typename R>
 R binom(T n, T r)
 {
   static std::map<std::pair<T, T>, R> cache;
