@@ -11,7 +11,8 @@ static const int FAMILY_SIZE = 5;
 unsigned long find_min_sum_of_family_of_size(const std::vector<unsigned long>& candidates, size_t family_size);
 bool is_concatenated_pair_prime(const unsigned long& f, const unsigned long& s);
 bool is_concatenated_family(const std::vector<unsigned long>& primes, size_t last_changed, size_t& last_match);
-std::vector<unsigned long> find_pairs_of(const unsigned long& p, size_t index, const std::vector<unsigned long>& primes);
+std::vector<unsigned long>
+find_pairs_of(const unsigned long& p, size_t index, const std::vector<unsigned long>& primes);
 bool check_concatenated_family(const std::vector<unsigned long>& primes, size_t last_changed);
 
 // The primes 3, 7, 109, and 673, are quite remarkable.  By taking any two
@@ -122,9 +123,6 @@ is_concatenated_family(const std::vector<unsigned long>& primes, size_t last_cha
 
 bool check_concatenated_family(const std::vector<unsigned long>& primes, size_t last_changed)
 {
-  static std::set<std::pair<unsigned long, unsigned long>> discarded_pairs;
-  static std::set<std::pair<unsigned long, unsigned long>> concatenated_pairs;
-
   // This function assumes that the family in the range f = [0, last_changed[ is
   // a concatenated family.  Elements in the [last_changed, primes.size()[
   // range will be checked against the f family one by one.
@@ -140,19 +138,8 @@ bool check_concatenated_family(const std::vector<unsigned long>& primes, size_t 
   {
     const auto pair = std::make_pair(verified, not_verified);
 
-    if (discarded_pairs.find(pair) != discarded_pairs.end())
-      return false;
-
-    if (concatenated_pairs.find(pair) != concatenated_pairs.end())
-      continue;
-
     if (!is_concatenated_pair_prime(pair.first, pair.second))
-    {
-      discarded_pairs.insert(pair);
       return false;
-    }
-
-    concatenated_pairs.insert(pair);
   }
 
   return true;
@@ -161,13 +148,26 @@ bool check_concatenated_family(const std::vector<unsigned long>& primes, size_t 
 bool
 is_concatenated_pair_prime(const unsigned long& f, const unsigned long& s)
 {
-  // TODO: profile usage of a sieve vs.
-//  static const std::vector<bool>& sieve =
-//    prime::sieve_of_erathostenes(100000000);
+  static std::set<std::pair<unsigned long, unsigned long>> discarded_pairs;
+  static std::set<std::pair<unsigned long, unsigned long>> concatenated_pairs;
+
+  const auto& pair = std::make_pair(f, s);
+
+  if (discarded_pairs.find(pair) != discarded_pairs.end())
+    return false;
+
+  if (concatenated_pairs.find(pair) != concatenated_pairs.end())
+    return true;
 
   unsigned long left_candidate = (f * static_cast<unsigned long>(std::pow(10, number::digits_in_number(s))) + s);
   unsigned long right_candidate = (s * static_cast<unsigned long>(std::pow(10, number::digits_in_number(f))) + f);
 
-  return prime::is_prime(left_candidate) && prime::is_prime(right_candidate);
-//  return sieve[left_candidate] && sieve[right_candidate];
+  bool ret = prime::is_prime(left_candidate) && prime::is_prime(right_candidate);
+
+  if (ret)
+    concatenated_pairs.insert(pair);
+  else
+    discarded_pairs.insert(pair);
+
+  return ret;
 }
