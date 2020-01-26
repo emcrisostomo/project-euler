@@ -37,7 +37,7 @@ main(int argc, char *argv[])
   for (auto i = 0; i < primes.size(); ++i)
   {
     const auto& p = primes[i];
-    const std::vector<unsigned long>& candidate_pairs = find_pairs_of(p, i, primes);
+    const auto& candidate_pairs = find_pairs_of(p, i, primes);
 
     auto ret = find_min_sum_of_family_of_size(candidate_pairs, FAMILY_SIZE);
 
@@ -80,7 +80,7 @@ find_min_sum_of_family_of_size(const std::vector<unsigned long>& candidates, siz
 
   while (comb_index[k - 1] < n)
   {
-    const std::vector<unsigned long>& prime_family = combinations::get_elements_by_index(candidates, comb_index);
+    const auto& prime_family = combinations::get_elements_by_index(candidates, comb_index);
 
     size_t last_match{0};
 
