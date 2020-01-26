@@ -78,7 +78,7 @@ find_min_sum_of_family_of_size(const std::vector<unsigned long>& candidates, siz
   std::vector<size_t> comb_index = combinations::init_combination(k);
   size_t last_changed{0};
 
-  while (comb_index[k - 1] < n)
+  while (combinations::hast_next(comb_index, n, k))
   {
     const auto& prime_family = combinations::get_elements_by_index(candidates, comb_index);
 

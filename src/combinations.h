@@ -17,6 +17,7 @@ template<typename T, typename R = T>
 R binom(T n, T r);
 
 std::vector<size_t> init_combination(size_t k);
+bool hast_next(const std::vector<size_t>& vector, size_t n, size_t k);
 unsigned long next_combination(std::vector<size_t>& vector, size_t n, size_t k);
 size_t next_combination_starting_from(std::vector<size_t>& vector, size_t n, size_t k, size_t last_match);
 std::vector<unsigned long>
@@ -48,6 +49,12 @@ init_combination(size_t k)
     comb_index[i] = i;
 
   return comb_index;
+}
+
+bool
+hast_next(const std::vector<size_t>& vector, size_t n, size_t k)
+{
+  return vector[k - 1] < n;
 }
 
 // TODO: k could be deduced from the vector size
