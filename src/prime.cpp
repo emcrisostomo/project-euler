@@ -28,6 +28,14 @@ std::vector<bool> prime::sieve_of_erathostenes(size_t size)
   return sieve_of_erathostenes(size, nullptr, nullptr);
 }
 
+size_t ceil_odd(size_t num)
+{
+  if (num % 2 == 0)
+    return num + 1;
+
+  return num;
+}
+
 std::vector<bool> prime::sieve_of_erathostenes(size_t size,
                                                prime::prime_found_callback prime_found_callback,
                                                void *context)
@@ -40,24 +48,31 @@ std::vector<bool> prime::sieve_of_erathostenes(size_t size,
   // special case
   primes[2] = true;
 
-  if (prime_found_callback != nullptr) prime_found_callback(2, context);
+  if (prime_found_callback != nullptr)
+    prime_found_callback(2, context);
 
-  for (auto i = 4; i < primes.size(); i += 2)
+  for (auto i = 4; i < size; i += 2)
     primes[i] = false;
 
+  const size_t sqrt_n = ceil_odd(std::sqrtl(static_cast<long double>(size)));
+
   // Process the sieve
-  for (unsigned long i = 3; i < primes.size(); i += 2)
+  for (auto i = 3; i < sqrt_n; i += 2)
   {
     if (!primes[i])
       continue;
 
-    if (prime_found_callback != nullptr) prime_found_callback(i, context);
+    if (prime_found_callback != nullptr)
+      prime_found_callback(i, context);
 
-    for (unsigned long j = i * i; j < primes.size(); j += i)
-    {
+    for (auto j = i * i; j < size; j += i)
       primes[j] = false;
-    }
   }
+
+  if (prime_found_callback != nullptr)
+    for (auto i = sqrt_n; i < size; i += 2)
+      if (primes[i])
+        prime_found_callback(i, context);
 
   return primes;
 }
