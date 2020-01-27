@@ -2,7 +2,6 @@
 #include <cassert>
 #include <numeric>
 #include <number.h>
-#include <set>
 #include "prime.h"
 #include "combinations.h"
 
@@ -148,26 +147,10 @@ bool check_concatenated_family(const std::vector<unsigned long>& primes, size_t 
 bool
 is_concatenated_pair_prime(const unsigned long& f, const unsigned long& s)
 {
-  static std::set<std::pair<unsigned long, unsigned long>> discarded_pairs;
-  static std::set<std::pair<unsigned long, unsigned long>> concatenated_pairs;
-
-  const auto& pair = std::make_pair(f, s);
-
-  if (discarded_pairs.find(pair) != discarded_pairs.end())
-    return false;
-
-  if (concatenated_pairs.find(pair) != concatenated_pairs.end())
-    return true;
+  static const prime::sieve_of_erathostenes& sieve = prime::sieve_of_erathostenes(8999'8999);
 
   unsigned long left_candidate = (f * static_cast<unsigned long>(std::pow(10, number::digits_in_number(s))) + s);
   unsigned long right_candidate = (s * static_cast<unsigned long>(std::pow(10, number::digits_in_number(f))) + f);
 
-  bool ret = prime::is_prime(left_candidate) && prime::is_prime(right_candidate);
-
-  if (ret)
-    concatenated_pairs.insert(pair);
-  else
-    discarded_pairs.insert(pair);
-
-  return ret;
+  return sieve[left_candidate] && sieve[right_candidate];
 }
