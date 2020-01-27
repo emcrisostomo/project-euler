@@ -83,8 +83,7 @@ is_concatenated_family(const std::vector<unsigned long>& primes)
 bool
 is_concatenated_pair_prime(const unsigned long& f, const unsigned long& s)
 {
-  static const std::vector<bool>& sieve =
-    prime::sieve_of_erathostenes(10000000);
+  const auto& sieve = prime::sieve_of_erathostenes(10'000'000);
   unsigned long left_candidate = (f * static_cast<unsigned long>(std::pow(10, number::digits_in_number(s))) + s);
   unsigned long right_candidate = (s * static_cast<unsigned long>(std::pow(10, number::digits_in_number(f))) + f);
 

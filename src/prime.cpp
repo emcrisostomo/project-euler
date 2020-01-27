@@ -23,11 +23,6 @@ std::vector<unsigned long> prime::get_primes_smaller_than(size_t limit)
   return primes;
 }
 
-std::vector<bool> prime::sieve_of_erathostenes(size_t size)
-{
-  return sieve_of_erathostenes(size, nullptr, nullptr);
-}
-
 size_t ceil_odd(size_t num)
 {
   if (num % 2 == 0)
@@ -36,46 +31,43 @@ size_t ceil_odd(size_t num)
   return num;
 }
 
-std::vector<bool> prime::sieve_of_erathostenes(size_t size,
-                                               prime::prime_found_callback prime_found_callback,
-                                               void *context)
+size_t to_odd_coord(size_t num)
 {
-  std::vector<bool> primes(size, true);
-  primes[0] = false;
-  primes[1] = false;
-
-  // Since even numbers account for half of the sieve size, we treat them as a
-  // special case
-  primes[2] = true;
-
-  if (prime_found_callback != nullptr)
-    prime_found_callback(2, context);
-
-  for (auto i = 4; i < size; i += 2)
-    primes[i] = false;
-
-  const size_t sqrt_n = ceil_odd(std::sqrtl(static_cast<long double>(size)));
-
-  // Process the sieve
-  for (auto i = 3; i < sqrt_n; i += 2)
-  {
-    if (!primes[i])
-      continue;
-
-    if (prime_found_callback != nullptr)
-      prime_found_callback(i, context);
-
-    for (auto j = i * i; j < size; j += i)
-      primes[j] = false;
-  }
-
-  if (prime_found_callback != nullptr)
-    for (auto i = sqrt_n; i < size; i += 2)
-      if (primes[i])
-        prime_found_callback(i, context);
-
-  return primes;
+  return ((num - 1) / 2);
 }
+//
+//std::vector<bool> prime::sieve_of_erathostenes(size_t size,
+//                                               prime::prime_found_callback prime_found_callback,
+//                                               void *context)
+//{
+//  std::vector<bool> primes(size / 2, true);
+//  primes[0] = false;
+//
+//  if (prime_found_callback != nullptr)
+//    prime_found_callback(2, context);
+//
+//  const size_t sqrt_n = ceil_odd(std::sqrtl(static_cast<long double>(size)));
+//
+//  // Process the sieve
+//  for (auto i = 3; i < sqrt_n; i += 2)
+//  {
+//    if (!primes[to_odd_coord(i)])
+//      continue;
+//
+//    if (prime_found_callback != nullptr)
+//      prime_found_callback(i, context);
+//
+//    for (auto j = i * i; j < size; j += 2 * i)
+//      primes[to_odd_coord(j)] = false;
+//  }
+//
+//  if (prime_found_callback != nullptr)
+//    for (auto i = sqrt_n; i < size; i += 2)
+//      if (primes[to_odd_coord(i)])
+//        prime_found_callback(i, context);
+//
+//  return primes;
+//}
 
 std::map<unsigned long, unsigned int> prime::factorize(unsigned long number)
 {
@@ -130,4 +122,69 @@ bool prime::is_prime(const unsigned long number)
   }
 
   return true;
+}
+
+prime::sieve_of_erathostenes::sieve_of_erathostenes(size_t size) : sieve_size{size}
+{
+  build_sieve(size, nullptr, nullptr);
+}
+
+prime::sieve_of_erathostenes::sieve_of_erathostenes(size_t size,
+                                                    prime::prime_found_callback prime_found_callback,
+                                                    void *context) : sieve_size{size}
+{
+  build_sieve(size, prime_found_callback, context);
+}
+
+void prime::sieve_of_erathostenes::build_sieve(
+  size_t size,
+  prime::prime_found_callback callback,
+  void *context)
+{
+  std::vector<bool> primes(size / 2, true);
+  primes[0] = false;
+
+  if (callback != nullptr)
+    callback(2, context);
+
+  const size_t sqrt_n = ceil_odd(std::sqrtl(static_cast<long double>(size)));
+
+  // Process the sieve
+  for (auto i = 3; i < sqrt_n; i += 2)
+  {
+    if (!primes[to_odd_coord(i)])
+      continue;
+
+    if (callback != nullptr)
+      callback(i, context);
+
+    for (auto j = i * i; j < size; j += 2 * i)
+      primes[to_odd_coord(j)] = false;
+  }
+
+  if (callback != nullptr)
+    for (auto i = sqrt_n; i < size; i += 2)
+      if (primes[to_odd_coord(i)])
+        callback(i, context);
+
+  this->sieve = std::move(primes);
+}
+
+size_t prime::sieve_of_erathostenes::size() const
+{
+  return this->sieve_size;
+}
+
+const bool prime::sieve_of_erathostenes::operator[](std::size_t idx) const
+{
+  if (idx == 0 || idx == 1)
+    return false;
+
+  if (idx == 2)
+    return true;
+
+  if (idx % 2 == 0)
+    return false;
+
+  return this->sieve[to_odd_coord(idx)];
 }

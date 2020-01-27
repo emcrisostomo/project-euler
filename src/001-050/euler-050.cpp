@@ -17,7 +17,7 @@
 int main(int argc, char *argv[])
 {
   const unsigned int limit = 999999;
-  const std::vector<bool> sieve = prime::sieve_of_erathostenes(limit);
+  const auto& sieve = prime::sieve_of_erathostenes(limit);
   const std::vector<unsigned long> primes = prime::get_primes_smaller_than(limit);
 
   std::vector<unsigned long> sum_of_primes(primes.size() + 1);

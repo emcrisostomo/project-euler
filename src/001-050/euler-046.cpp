@@ -19,7 +19,7 @@
 //
 int main(int argc, char *argv[])
 {
-  std::vector<bool> sieve = prime::sieve_of_erathostenes(1000000);
+  const auto& sieve = prime::sieve_of_erathostenes(1'000'000);
 
   for (unsigned int i = 35; i < sieve.size(); i += 2)
   {

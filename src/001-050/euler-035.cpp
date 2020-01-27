@@ -3,7 +3,7 @@
 #include <cmath>
 #include "prime.h"
 
-bool rotations_are_prime(int prime, std::vector<bool> sieve);
+bool rotations_are_prime(int prime, const prime::sieve_of_erathostenes& sieve);
 
 // The number, 197, is called a circular prime because all rotations of the
 // digits: 197, 971, and 719, are themselves prime.
@@ -17,7 +17,7 @@ int main()
 {
   unsigned int count{0};
   unsigned int limit{1000000};
-  std::vector<bool> sieve = prime::sieve_of_erathostenes(limit);
+  const auto& sieve = prime::sieve_of_erathostenes(limit);
 
   for (auto i = 2; i < limit; ++i)
   {
@@ -30,7 +30,7 @@ int main()
   return 0;
 }
 
-bool rotations_are_prime(int prime, std::vector<bool> sieve)
+bool rotations_are_prime(int prime, const prime::sieve_of_erathostenes& sieve)
 {
   auto digits = static_cast<unsigned int>(log10(prime)) + 1;
 

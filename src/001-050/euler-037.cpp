@@ -2,7 +2,7 @@
 #include "prime.h"
 #include "number.h"
 
-bool is_truncatable(int n, const std::vector<bool>& sieve);
+bool is_truncatable(int n, const prime::sieve_of_erathostenes& sieve);
 
 // The number 3797 has an interesting property. Being prime itself, it is
 // possible to continuously remove digits from left to right, and remain prime
@@ -19,7 +19,7 @@ int main()
   // The limit is arbitrary
   const unsigned int limit{1000000};
   const unsigned int to_find{11};
-  const std::vector<bool> sieve = prime::sieve_of_erathostenes(limit);
+  const auto& sieve = prime::sieve_of_erathostenes(limit);
   unsigned long sum{0};
   unsigned int count{0};
 
@@ -40,7 +40,7 @@ int main()
   return 0;
 }
 
-bool is_truncatable(int n, const std::vector<bool>& sieve)
+bool is_truncatable(int n, const prime::sieve_of_erathostenes& sieve)
 {
   for (auto i = 10; i <= n; i *= 10)
   {

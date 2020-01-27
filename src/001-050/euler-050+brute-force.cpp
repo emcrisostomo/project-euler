@@ -17,7 +17,7 @@
 int main(int argc, char *argv[])
 {
   const unsigned int limit = 999999;
-  const std::vector<bool> sieve = prime::sieve_of_erathostenes(limit);
+  const auto& sieve = prime::sieve_of_erathostenes(limit);
   unsigned long longest_prime{0};
   unsigned long max_consecutive_primes{0};
 

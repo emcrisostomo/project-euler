@@ -9,7 +9,7 @@ const unsigned int upper_limit = 2'000'000;
 //
 int main()
 {
-  unsigned long sum_of_primes = 0;
+  unsigned long sum_of_primes{0};
 
   prime::sieve_of_erathostenes(upper_limit,
                                [](unsigned long i, void *context)

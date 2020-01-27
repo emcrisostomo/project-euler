@@ -10,7 +10,7 @@
 //
 int main()
 {
-  std::vector<bool> sieve = prime::sieve_of_erathostenes(7654321);
+  const auto& sieve = prime::sieve_of_erathostenes(7'654'321);
 
   for (long i = sieve.size() - 1; i >= 0; --i)
   {
