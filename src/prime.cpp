@@ -180,11 +180,8 @@ const bool prime::sieve_of_erathostenes::operator[](std::size_t idx) const
   if (idx == 0 || idx == 1)
     return false;
 
-  if (idx == 2)
-    return true;
-
   if (idx % 2 == 0)
-    return false;
+    return (idx == 2);
 
   return this->sieve[to_odd_coord(idx)];
 }
