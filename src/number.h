@@ -189,6 +189,53 @@ bool is_hexagonal(unsigned long number)
   return std::fmod(s, 4) == 3;
 }
 
+bool is_heptagonal(unsigned long number)
+{
+  // The n-th heptagonal number is h_n:
+  //
+  //   h_n = n (5n - 3) / 2
+  //       = (5n^2 - 3n) / 2
+  //   =>
+  //   5n^2 -3n - 2h_n = 0
+  //   =>
+  //   n = 3 +- sqrt(9 + 40 h_n)
+  //       ---------------------
+  //                 10
+  //
+  // Since n \in N, then
+  //
+  //   3 +- sqrt(9 + 40 h_n) \equiv 0 (mod 10)
+  //   =>
+  //   sqrt(9 + 40 h_n) \equiv 7 (mod 10)
+  auto s = std::sqrtl(9 + 40 * number);
+
+  return std::fmod(s, 10) == 7;
+}
+
+bool is_octagonal(unsigned long number)
+{
+  // The n-th octagonal number is h_n:
+  //
+  //   h_n = n (3n - 2)
+  //       = 3n^2 - 2n
+  //   =>
+  //   3n^2 - 2n - h_n = 0
+  //   =>
+  //   n = 1 +- sqrt(1 + 3 h_n)
+  //       --------------------
+  //                3
+  //
+  //  Since n \in N, then
+  //
+  //    1 +- sqrt(1 + 3 h_n) \equiv 0 (mod 3)
+  //    =>
+  //    sqrt(1 + 3 h_n) \equiv 2 (mod 3)
+  auto s = std::sqrtl(1 + 3 * number);
+
+  return std::fmod(s, 3) == 2;
+}
+
+
 bool is_palindrome(unsigned long n, unsigned int base = 10)
 {
   unsigned long reversed{0};
