@@ -305,7 +305,7 @@ add_test(euler-060+combinations euler-060+combinations)
 set_tests_properties(euler-060+combinations PROPERTIES PASS_REGULAR_EXPRESSION "^26033\n$")
 
 add_test(euler-061 euler-061)
-set_tests_properties(euler-061 PROPERTIES PASS_REGULAR_EXPRESSION "^\n$")
+set_tests_properties(euler-061 PROPERTIES PASS_REGULAR_EXPRESSION "^28684\n$")
 
 add_test(euler-067 euler-067 ${PROJECT_SOURCE_DIR}/src/051-100/p067_triangle.txt)
 set_tests_properties(euler-067 PROPERTIES PASS_REGULAR_EXPRESSION "^7273\n$")
