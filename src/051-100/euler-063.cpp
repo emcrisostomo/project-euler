@@ -23,7 +23,7 @@ main(int argc, char *argv[])
   //
   //   10^{n - 1} <= a^n < 10^n
   //
-  // Since a < 10, the expoential in base 10 will eventually outgrow a^n:
+  // Since a < 10, the exponential in base 10 will eventually outgrow a^n:
   //
   //   lim_{n \goto \infty} \frac{10^{n - 1}}{a^n} = \infty
   //
