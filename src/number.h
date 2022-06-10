@@ -207,7 +207,7 @@ bool is_heptagonal(unsigned long number)
   //   3 +- sqrt(9 + 40 h_n) \equiv 0 (mod 10)
   //   =>
   //   sqrt(9 + 40 h_n) \equiv 7 (mod 10)
-  auto s = std::sqrtl(9 + 40 * number);
+  auto s = sqrtl(9 + 40 * number);
 
   return std::fmod(s, 10) == 7;
 }
@@ -230,7 +230,7 @@ bool is_octagonal(unsigned long number)
   //    1 +- sqrt(1 + 3 h_n) \equiv 0 (mod 3)
   //    =>
   //    sqrt(1 + 3 h_n) \equiv 2 (mod 3)
-  auto s = std::sqrtl(1 + 3 * number);
+  auto s = sqrtl(1 + 3 * number);
 
   return std::fmod(s, 3) == 2;
 }

@@ -2,6 +2,7 @@
 #include <set>
 #include <array>
 #include <numeric>
+#include <algorithm>
 #include "number.h"
 
 typedef unsigned long poly_num;

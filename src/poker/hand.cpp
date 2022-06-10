@@ -2,7 +2,9 @@
 // Created by enrico.m.crisostomo on 09/01/2020.
 //
 
+#include <stdexcept>
 #include <string>
+#include <algorithm>
 #include "hand.h"
 
 namespace emc

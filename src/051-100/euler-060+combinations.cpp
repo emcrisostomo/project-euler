@@ -2,6 +2,7 @@
 #include <cassert>
 #include <numeric>
 #include <number.h>
+#include <limits>
 #include "prime.h"
 #include "combinations.h"
 

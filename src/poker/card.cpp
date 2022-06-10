@@ -2,6 +2,7 @@
 // Created by enrico.m.crisostomo on 09/01/2020.
 //
 
+#include <stdexcept>
 #include "card.h"
 
 emc::poker::card::rank::rank(const std::string& r)

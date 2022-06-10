@@ -147,7 +147,7 @@ void prime::sieve_of_erathostenes::build_sieve(
   if (callback != nullptr)
     callback(2, context);
 
-  const size_t sqrt_n = ceil_odd(std::sqrtl(static_cast<long double>(size)));
+  const size_t sqrt_n = ceil_odd(sqrtl(static_cast<long double>(size)));
 
   // Process the sieve
   for (auto i = 3; i < sqrt_n; i += 2)
