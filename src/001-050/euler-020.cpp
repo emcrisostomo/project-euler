@@ -13,7 +13,7 @@
 int main()
 {
   mpz_class n{100};
-  n = factorial::of(n);
+  n = emc::factorial::of(n);
 
   const auto& n_str = n.get_str(10);
   unsigned long sum{0};

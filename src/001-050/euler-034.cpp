@@ -59,6 +59,6 @@ void calculate_factorials(std::vector<unsigned int>& vector, int limit)
 {
   for (unsigned int i = 0; i <= limit; ++i)
   {
-    vector[i] = factorial::of(i);
+    vector[i] = emc::factorial::of(i);
   }
 }
