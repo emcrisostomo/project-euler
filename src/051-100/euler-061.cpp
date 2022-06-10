@@ -5,8 +5,8 @@
 #include <algorithm>
 #include "number.h"
 
-typedef unsigned long poly_num;
-typedef std::set<poly_num> poly_set;
+using poly_num = unsigned long;
+using poly_set = std::set<poly_num>;
 
 void
 load_polygonal_numbers(poly_set& triangular_numbers,
@@ -18,7 +18,7 @@ load_polygonal_numbers(poly_set& triangular_numbers,
 
 bool
 find_chain(std::array<poly_num, 6>& chain,
-           const std::vector<const poly_set *const>& polygonal_numbers_set,
+           const std::vector<const poly_set *>& polygonal_numbers_set,
            int first_index,
            int last_index);
 
@@ -74,7 +74,7 @@ main(int argc, char *argv[])
                          heptagonal_numbers,
                          octagonal_numbers);
 
-  std::vector<const poly_set *const> polygonal_numbers_set{&triangular_numbers,
+  std::vector<const poly_set *> polygonal_numbers_set{&triangular_numbers,
                                                            &square_numbers,
                                                            &pentagonal_numbers,
                                                            &hexagonal_numbers,
@@ -101,7 +101,7 @@ main(int argc, char *argv[])
 }
 
 bool find_chain(std::array<poly_num, 6>& chain,
-                const std::vector<const poly_set *const>& polygonal_numbers_set,
+                const std::vector<const poly_set *>& polygonal_numbers_set,
                 int first_index,
                 int last_index)
 {
