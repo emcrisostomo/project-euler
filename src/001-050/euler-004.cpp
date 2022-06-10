@@ -11,12 +11,9 @@ int main(int argc, char *argv[])
     {
       unsigned long m = s * f;
 
-      if (number::is_palindrome(m))
+      if (number::is_palindrome(m) && max <= m)
       {
-        if (max <= m)
-        {
-          max = m;
-        }
+        max = m;
       }
     }
   }

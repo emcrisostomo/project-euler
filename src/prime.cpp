@@ -175,7 +175,7 @@ size_t prime::sieve_of_erathostenes::size() const
   return this->sieve_size;
 }
 
-const bool prime::sieve_of_erathostenes::operator[](std::size_t idx) const
+bool prime::sieve_of_erathostenes::operator[](std::size_t idx) const
 {
   if (idx == 0 || idx == 1)
     return false;

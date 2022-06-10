@@ -14,7 +14,7 @@ void parse_bytes(std::string& line, std::vector<unsigned char>& bytes);
 void parse_token(const std::string& char_value, std::vector<unsigned char>& bytes);
 unsigned long is_enc_text_valid(const std::vector<unsigned char>& bytes,
                                 const std::vector<unsigned char>& enc_key);
-bool is_valid_byte(unsigned char& c);
+bool is_valid_byte(const unsigned char& c);
 void calculate_enc_key(std::vector<unsigned char>& enc_key, int i);
 
 // Each character on a computer is assigned a unique code and the preferred
@@ -113,7 +113,7 @@ is_enc_text_valid(
 }
 
 bool
-is_valid_byte(unsigned char& c)
+is_valid_byte(const unsigned char& c)
 {
   return
     (c == ' ')

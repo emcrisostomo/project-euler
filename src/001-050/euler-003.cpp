@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
       auto n = std::stoull(argv[i]);
       std::cout << prime::largest_prime_factor_of(n) << "\n";
     }
-    catch (std::invalid_argument& ex)
+    catch (const std::invalid_argument& ex)
     {
       std::cerr << "Invalid number: " << argv[i] << "\n";
       continue;

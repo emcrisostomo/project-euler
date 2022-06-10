@@ -161,7 +161,6 @@ get_masked_elements(const std::vector<T>& elements, const std::vector<bool>& mas
   assert(elements.size() == mask.size());
 
   std::vector<T> ret;
-//  ret.reserve(mask.size());
 
   for (auto i = 0; i < mask.size(); ++i)
   {

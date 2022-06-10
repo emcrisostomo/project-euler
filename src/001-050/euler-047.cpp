@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
     {
       std::cout << p - 3 << "\n";
       return 0;
-    };
+    }
   }
 
   return 1;

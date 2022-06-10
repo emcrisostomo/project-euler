@@ -30,7 +30,7 @@ int main()
   process_range(2, 9, 1234, 9876, pandigital_products);
   process_range(12, 98, 123, 987, pandigital_products);
 
-  std::cout << std::accumulate(pandigital_products.begin(), pandigital_products.end(), 0ul) << "\n";
+  std::cout << std::accumulate(pandigital_products.begin(), pandigital_products.end(), 0UL) << "\n";
 
   return 0;
 }

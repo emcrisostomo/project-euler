@@ -94,7 +94,7 @@ main(int argc, char *argv[])
       break;
   }
 
-  sum = std::accumulate(chain.begin(), chain.end(), 0ul);
+  sum = std::accumulate(chain.begin(), chain.end(), 0UL);
 
   std::cout << sum << '\n';
   return 0;

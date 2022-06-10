@@ -4,11 +4,11 @@
 #include <map>
 #include "number.h"
 
-typedef struct cube_key_freq
+using cube_key_freq = struct cube_key_freq
 {
   unsigned short freq;
   uint64_t min_cube;
-} cube_key_freq;
+};
 
 // The cube, 41063625 (345^3), can be permuted to produce two other cubes:
 // 56623104 (384^3) and 66430125 (405^3).  In fact, 41063625 is the smallest
@@ -20,7 +20,6 @@ typedef struct cube_key_freq
 int
 main(int argc, char *argv[])
 {
-  uint64_t smallest_cube{0};
   std::map<uint64_t, cube_key_freq> cube_key_frequencies;
 
   // n^3 will overflow when n \approx 2^20 when using 64-bit integers.

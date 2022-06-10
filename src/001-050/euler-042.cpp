@@ -4,7 +4,7 @@
 #include <cmath>
 #include "number.h"
 
-bool is_triangular_word(std::string word);
+bool is_triangular_word(const std::string& word);
 
 // The nth term of the sequence of triangle numbers is given by
 //
@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
   return 0;
 }
 
-bool is_triangular_word(std::string word)
+bool is_triangular_word(const std::string& word)
 {
   unsigned int value{0};
 

@@ -11,7 +11,7 @@
 
 namespace prime
 {
-typedef void (*prime_found_callback)(unsigned long i, void *context);
+using prime_found_callback = void (*)(unsigned long i, void *context);
 
 class sieve_of_erathostenes
 {
@@ -19,7 +19,7 @@ public:
   explicit sieve_of_erathostenes(size_t size);
   sieve_of_erathostenes(size_t size, prime_found_callback prime_found_callback, void *context);
   size_t size() const;
-  const bool operator[](std::size_t idx) const;
+  bool operator[](std::size_t idx) const;
 private:
   std::vector<bool> sieve;
   std::size_t sieve_size;
